@@ -1,0 +1,23 @@
+{
+  "generatedAt": "seed",
+  "quotes": [
+    { "id": "mindset-seed-1", "text": "Du musst nicht perfekt starten. Du musst nur anfangen.", "author": null, "category": "mindset", "dateKey": "seed" },
+    { "id": "mindset-seed-2", "text": "Disziplin ist die Brücke zwischen Zielen und Ergebnissen.", "author": "Jim Rohn", "category": "mindset", "dateKey": "seed" },
+    { "id": "mindset-seed-3", "text": "Dein Mindset entscheidet, bevor die Umstände es tun.", "author": null, "category": "mindset", "dateKey": "seed" },
+    { "id": "mindset-seed-4", "text": "Kleine Schritte, jeden Tag, schlagen große Pläne, die nie starten.", "author": null, "category": "mindset", "dateKey": "seed" },
+    { "id": "mindset-seed-5", "text": "Comfort Zone verlassen heißt nicht, Angst zu ignorieren – sondern trotzdem zu handeln.", "author": null, "category": "mindset", "dateKey": "seed" },
+    { "id": "business-seed-1", "text": "Verkaufe nicht das Produkt. Verkaufe das Ergebnis.", "author": null, "category": "business", "dateKey": "seed" },
+    { "id": "business-seed-2", "text": "Dein erstes Angebot muss nicht perfekt sein. Es muss existieren.", "author": null, "category": "business", "dateKey": "seed" },
+    { "id": "business-seed-3", "text": "Umsatz löst die meisten Startup-Probleme. Konzentrier dich darauf.", "author": null, "category": "business", "dateKey": "seed" },
+    { "id": "business-seed-4", "text": "Wer wartet, bis alles sicher ist, wartet für immer.", "author": null, "category": "business", "dateKey": "seed" },
+    { "id": "discipline-seed-1", "text": "Motivation bringt dich in Gang. Disziplin hält dich am Laufen.", "author": null, "category": "discipline", "dateKey": "seed" },
+    { "id": "discipline-seed-2", "text": "Tu es, auch wenn du keine Lust hast. Besonders dann.", "author": null, "category": "discipline", "dateKey": "seed" },
+    { "id": "discipline-seed-3", "text": "Konsistenz schlägt Intensität – jedes Mal.", "author": null, "category": "discipline", "dateKey": "seed" },
+    { "id": "fitness-seed-1", "text": "Dein Körper hört zu, was du ihm jeden Tag erzählst.", "author": null, "category": "fitness", "dateKey": "seed" },
+    { "id": "fitness-seed-2", "text": "Der schwerste Rep ist der, den du fast ausgelassen hättest.", "author": null, "category": "fitness", "dateKey": "seed" },
+    { "id": "fitness-seed-3", "text": "Bewegung ist die billigste Therapie, die du hast.", "author": null, "category": "fitness", "dateKey": "seed" },
+    { "id": "gratitude-seed-1", "text": "Dankbarkeit verwandelt, was du hast, in genug.", "author": null, "category": "gratitude", "dateKey": "seed" },
+    { "id": "gratitude-seed-2", "text": "Bevor du nach mehr fragst, schau auf das, was schon da ist.", "author": null, "category": "gratitude", "dateKey": "seed" },
+    { "id": "gratitude-seed-3", "text": "Ein dankbarer Blick verändert den ganzen Tag.", "author": null, "category": "gratitude", "dateKey": "seed" }
+  ]
+}

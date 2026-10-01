@@ -1,0 +1,13 @@
+# Xcode / XcodeGen
+*.xcodeproj
+*.xcworkspace
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+
+# Hinweis: ContentPipeline/quotes.json bewusst NICHT hier eintragen — die Datei
+# wird von der GitHub Action committet und über GitHub Pages ausgeliefert (siehe README).
+
+# macOS
+.DS_Store

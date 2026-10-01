@@ -1,0 +1,42 @@
+name: Generate quotes.json
+
+# Läuft automatisch 1x pro Woche (Mo 03:00 UTC) und kann außerdem manuell
+# über den "Run workflow"-Button in GitHub Actions ausgelöst werden.
+# Ergebnis: ContentPipeline/quotes.json wird neu generiert und committet.
+#
+# Damit die App darauf zugreifen kann, aktiviere GitHub Pages für dieses Repo
+# (Settings -> Pages -> Branch: main, Ordner: /ContentPipeline) und trage die
+# resultierende URL in RemoteQuoteService.swift (endpoint) ein. Alternativ
+# funktioniert auch direkt der raw.githubusercontent.com-Link auf die Datei,
+# solange das Repo öffentlich ist.
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r ContentPipeline/requirements.txt
+
+      - name: Generate quotes
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python ContentPipeline/generate_quotes.py --days 30 --out ContentPipeline/quotes.json
+
+      - name: Commit updated quotes.json
+        run: |
+          git config user.name "quotes-bot"
+          git config user.email "actions@github.com"
+          git add ContentPipeline/quotes.json
+          git diff --quiet --cached || git commit -m "Update quotes.json"
+          git push
