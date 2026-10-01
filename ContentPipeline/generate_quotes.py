@@ -45,7 +45,7 @@ Regeln:
 
 def generate_for_category(client: "anthropic.Anthropic", category: str, label: str, count: int) -> list[dict]:
     message = client.messages.create(
-        model="claude-sonnet-4-5",
+        model="claude-sonnet-5",
         max_tokens=2000,
         messages=[{"role": "user", "content": PROMPT_TEMPLATE.format(count=count, category_label=label)}],
     )
