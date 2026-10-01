@@ -9,9 +9,8 @@ import Foundation
 /// hostest (z.B. GitHub Pages, ein simpler S3-Bucket, eine eigene kleine API).
 /// Das Format muss dem QuoteBatch-Schema entsprechen (siehe ContentPipeline/).
 enum RemoteQuoteService {
-    /// TODO: durch deinen echten, gehosteten Endpunkt ersetzen.
     static var endpoint: URL? {
-        URL(string: "https://example.com/dailymindset/quotes.json")
+        URL(string: "https://maxdke.github.io/daily-mindset-content/ContentPipeline/quotes.json")
     }
 
     /// Minimaler Abstand zwischen zwei Remote-Fetches, um Kosten/Traffic gering zu halten.
