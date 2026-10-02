@@ -1,6 +1,6 @@
 name: Generate quotes.json
 
-# Läuft automatisch 1x pro Woche (Mo 03:00 UTC) und kann außerdem manuell
+# Läuft automatisch 1x täglich (0:00 UTC) und kann außerdem manuell
 # über den "Run workflow"-Button in GitHub Actions ausgelöst werden.
 # Ergebnis: ContentPipeline/quotes.json wird neu generiert und committet.
 #
@@ -12,7 +12,7 @@ name: Generate quotes.json
 
 on:
   schedule:
-    - cron: "0 3 * * 1"
+    - cron: "0 0 * * *"
   workflow_dispatch: {}
 
 jobs:
