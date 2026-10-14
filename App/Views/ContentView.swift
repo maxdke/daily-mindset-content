@@ -471,74 +471,96 @@ struct ContentView: View {
     }
 
     private var categoryPicker: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 12) {
             Text("Kategorien")
                 .font(.headline)
-                .padding(.bottom, 8)
 
             // "Eigene" (.custom) ist als Kategorie wählbar (Premium), damit die eigenen
             // Sprüche mit ins Widget-Rotation einbezogen werden können, siehe QuoteCategory.custom.
-            // Bei "Eigene" gibt es zusätzlich ein eigenes "+" direkt in der Zeile, damit man
-            // einen neuen Spruch hier auf der Hauptseite anlegen kann, ohne erst ins
+            // Bei "Eigene" gibt es zusätzlich ein eigenes "+" oben rechts auf der Kachel, damit
+            // man einen neuen Spruch hier auf der Hauptseite anlegen kann, ohne erst ins
             // "Sprüche"-Sheet wechseln zu müssen (Hinzufügen bleibt dabei kostenlos,
             // unabhängig davon, ob die Kategorie selbst gerade gesperrt ist).
             // Radio-Verhalten: es ist immer genau eine Kategorie ausgewählt (siehe
             // AppViewModel.selectCategory) – der Tages-/Widget-Spruch kommt ohnehin nur
             // aus einer Kategorie, mehrere gleichzeitig anzuhaken hätte nur suggeriert,
             // dass alle einfließen.
-            ForEach(QuoteCategory.allCases) { category in
-                let isFree = QuoteCategory.freeCategories.contains(category)
-                let isSelected = viewModel.selectedCategories.contains(category)
-                let isLocked = !subscriptionManager.isPremium && !isFree
+            //
+            // Einzelne Kacheln statt einem durchgehenden Listenblock (Max' Wunsch): die
+            // ausgewählte Kategorie bekommt einen weißen "LED"-Rand mit Glow, unausgewählte
+            // nur einen dezenten dünnen Rand.
+            LazyVGrid(columns: [GridItem(.flexible(), spacing: 14), GridItem(.flexible())], spacing: 14) {
+                ForEach(QuoteCategory.allCases) { category in
+                    categoryTile(category)
+                }
+            }
+        }
+    }
 
-                HStack(spacing: 8) {
-                    Button {
-                        if isLocked {
-                            showPaywall = true
-                        } else {
-                            viewModel.selectCategory(category, isPremium: subscriptionManager.isPremium)
-                            // Bildergalerie nur für Premium (eigener Hintergrund ist wie
-                            // bisher Premium-gated) – sonst bliebe sie leer wirkungslos.
-                            if subscriptionManager.isPremium {
-                                categoryForGallery = category
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: category.symbolName)
-                                .foregroundStyle(isSelected ? Color.accentColor : .primary)
-                                .frame(width: 22)
-                            Text(category.displayName)
-                            Spacer()
-                            if isLocked {
-                                Image(systemName: "lock.fill").foregroundStyle(.secondary)
-                            } else if isSelected {
-                                Image(systemName: "checkmark.circle.fill").foregroundStyle(.tint)
-                            }
-                        }
-                        .contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
+    private func categoryTile(_ category: QuoteCategory) -> some View {
+        let isFree = QuoteCategory.freeCategories.contains(category)
+        let isSelected = viewModel.selectedCategories.contains(category)
+        let isLocked = !subscriptionManager.isPremium && !isFree
 
-                    if category == .custom {
-                        Button {
-                            showAddCustomQuote = true
-                        } label: {
-                            Image(systemName: "plus.circle.fill")
-                                .font(.system(size: 20))
-                                .foregroundStyle(Color.accentColor)
-                        }
-                        .buttonStyle(.plain)
+        return ZStack(alignment: .topTrailing) {
+            Button {
+                if isLocked {
+                    showPaywall = true
+                } else {
+                    viewModel.selectCategory(category, isPremium: subscriptionManager.isPremium)
+                    // Bildergalerie nur für Premium (eigener Hintergrund ist wie
+                    // bisher Premium-gated) – sonst bliebe sie leer wirkungslos.
+                    if subscriptionManager.isPremium {
+                        categoryForGallery = category
                     }
                 }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 10)
+            } label: {
+                VStack(alignment: .leading, spacing: 10) {
+                    Image(systemName: isLocked ? "lock.fill" : category.symbolName)
+                        .font(.system(size: 18, weight: .medium))
+                        .foregroundStyle(isLocked ? .secondary : .primary)
+                    Text(category.displayName)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(isLocked ? .secondary : .primary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.85)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(14)
                 .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(isSelected ? Color.accentColor.opacity(0.1) : .clear)
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.primary.opacity(isSelected ? 0.05 : 0.02))
                 )
-                .padding(.vertical, 2)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(isSelected ? Color.primary : Color.primary.opacity(0.16), lineWidth: isSelected ? 1.5 : 1)
+                )
+                .shadow(color: isSelected ? Color.primary.opacity(0.45) : .clear, radius: 14)
+                .contentShape(RoundedRectangle(cornerRadius: 16))
             }
+            .buttonStyle(.plain)
+
+            // Als eigenständiger Button neben (nicht innerhalb) dem Auswahl-Button,
+            // damit sich beide Taps zuverlässig nicht gegenseitig ins Gehege kommen.
+            HStack(spacing: 4) {
+                if category == .custom {
+                    Button {
+                        showAddCustomQuote = true
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.system(size: 17))
+                            .foregroundStyle(Color.primary.opacity(0.8))
+                    }
+                    .buttonStyle(.plain)
+                }
+                if isSelected {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 15))
+                        .foregroundStyle(Color.primary)
+                }
+            }
+            .padding(10)
         }
     }
 
