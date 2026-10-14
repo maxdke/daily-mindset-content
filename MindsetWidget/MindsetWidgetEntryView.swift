@@ -59,28 +59,28 @@ struct MindsetWidgetEntryView: View {
     }
 
     private var mediumView: some View {
-        HStack(alignment: .top, spacing: 12) {
-            Image(systemName: entry.quote?.category.symbolName ?? "brain.head.profile")
-                .font(.title2)
-                .foregroundStyle(entry.style.accentTextColor)
-            VStack(alignment: .leading, spacing: 6) {
+        VStack(spacing: 8) {
+            HStack(spacing: 6) {
+                Image(systemName: entry.quote?.category.symbolName ?? "brain.head.profile")
+                    .font(.system(size: 13, weight: .semibold))
                 Text(entry.quote?.category.displayName.uppercased() ?? "MINDSET")
                     .font(.system(size: 11, weight: .bold))
-                    .foregroundStyle(entry.style.accentTextColor)
-                Text(entry.quote?.text ?? "Kleine Schritte, jeden Tag, schlagen große Pläne, die nie starten.")
-                    .font(quoteFont.font(size: 15, weight: .medium))
-                    .foregroundStyle(entry.style.primaryTextColor(customTextColor: customTextColor))
-                    .lineLimit(4)
-                if let author = entry.quote?.author {
-                    Text("– \(author)")
-                        .font(.system(size: 11))
-                        .foregroundStyle(entry.style.secondaryTextColor(customTextColor: customTextColor))
-                }
             }
-            Spacer(minLength: 0)
+            .foregroundStyle(entry.style.accentTextColor)
+            Text(entry.quote?.text ?? "Kleine Schritte, jeden Tag, schlagen große Pläne, die nie starten.")
+                .font(quoteFont.font(size: 17, weight: .medium))
+                .foregroundStyle(entry.style.primaryTextColor(customTextColor: customTextColor))
+                .multilineTextAlignment(.center)
+                .lineLimit(4)
+                .minimumScaleFactor(0.8)
+            if let author = entry.quote?.author {
+                Text("– \(author)")
+                    .font(.system(size: 11))
+                    .foregroundStyle(entry.style.secondaryTextColor(customTextColor: customTextColor))
+            }
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .containerBackground(for: .widget) { backgroundGradient }
         .overlay(alignment: .bottomTrailing) {
             if !isPinned {
