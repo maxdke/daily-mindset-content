@@ -14,6 +14,10 @@ enum WidgetStyle: String, CaseIterable, Codable, Identifiable {
     case gold
     case light
     case photo
+    case noir
+    case neon
+    case sunrise
+    case forest
 
     var id: String { rawValue }
 
@@ -24,11 +28,15 @@ enum WidgetStyle: String, CaseIterable, Codable, Identifiable {
         case .gold: return "Gold"
         case .light: return "Light"
         case .photo: return "Foto"
+        case .noir: return "Noir"
+        case .neon: return "Neon Glow"
+        case .sunrise: return "Sunrise"
+        case .forest: return "Forest Calm"
         }
     }
 
     /// Hintergrund-Gradient für Homescreen-Widgets (klein/mittel) – gilt nur für
-    /// classic/mono/gold/light. photo hat ein eigenes Rendering.
+    /// classic/mono/gold/light/noir/neon/sunrise/forest. photo hat ein eigenes Rendering.
     var backgroundColors: [Color] {
         switch self {
         case .classic:
@@ -41,12 +49,25 @@ enum WidgetStyle: String, CaseIterable, Codable, Identifiable {
             return [Color(white: 0.98), Color(white: 0.88)]
         case .photo:
             return [.black, .black]
+        case .noir:
+            // Fast reines Schwarz, bewusst flach/ohne auffälligen Verlauf – passend
+            // zum "Noir Editorial"-Look der App.
+            return [Color(white: 0.04), .black]
+        case .neon:
+            // Flaches Schwarz als Bühne für den leuchtenden Rand (siehe
+            // MindsetWidgetEntryView.neonGlowOverlay) statt eines Verlaufs.
+            return [.black, .black]
+        case .sunrise:
+            return [Color(red: 1.0, green: 0.494, blue: 0.373), Color(red: 0.996, green: 0.706, blue: 0.482)]
+        case .forest:
+            return [Color(red: 0.102, green: 0.337, blue: 0.325), Color(red: 0.059, green: 0.239, blue: 0.243)]
         }
     }
 
     var primaryTextColor: Color {
         switch self {
         case .light: return .black
+        case .forest: return Color(red: 0.957, green: 0.973, blue: 0.961)
         default: return .white
         }
     }
@@ -55,6 +76,8 @@ enum WidgetStyle: String, CaseIterable, Codable, Identifiable {
         switch self {
         case .light: return .black.opacity(0.55)
         case .photo: return .white.opacity(0.8)
+        case .sunrise: return .white.opacity(0.85)
+        case .forest: return Color(red: 0.749, green: 0.902, blue: 0.812).opacity(0.85)
         default: return .white.opacity(0.65)
         }
     }
@@ -65,6 +88,9 @@ enum WidgetStyle: String, CaseIterable, Codable, Identifiable {
         case .gold: return Color(red: 0.80, green: 0.65, blue: 0.35)
         case .light: return Color(red: 0.70, green: 0.55, blue: 0.28)
         case .photo: return Color(red: 0.95, green: 0.84, blue: 0.60)
+        case .neon: return Color(red: 0.31, green: 0.90, blue: 1.0)
+        case .forest: return Color(red: 0.749, green: 0.902, blue: 0.812)
+        case .sunrise: return .white.opacity(0.85)
         default: return secondaryTextColor
         }
     }

@@ -51,6 +51,7 @@ struct MindsetWidgetEntryView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .containerBackground(for: .widget) { backgroundGradient }
+        .overlay { neonGlowOverlay }
         .overlay(alignment: .bottomTrailing) {
             if !isPinned {
                 nextQuoteButton
@@ -82,10 +83,23 @@ struct MindsetWidgetEntryView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .containerBackground(for: .widget) { backgroundGradient }
+        .overlay { neonGlowOverlay }
         .overlay(alignment: .bottomTrailing) {
             if !isPinned {
                 nextQuoteButton
             }
+        }
+    }
+
+    /// Dezenter leuchtender Rand speziell für den "Neon Glow"-Stil (siehe WidgetStyle) –
+    /// ContainerRelativeShape übernimmt automatisch die vom System vorgegebene
+    /// Eckenrundung des Widgets, damit der Rand exakt an der echten Kontur anliegt.
+    @ViewBuilder
+    private var neonGlowOverlay: some View {
+        if entry.style == .neon {
+            ContainerRelativeShape()
+                .strokeBorder(entry.style.accentTextColor, lineWidth: 1.5)
+                .shadow(color: entry.style.accentTextColor.opacity(0.6), radius: 8)
         }
     }
 
