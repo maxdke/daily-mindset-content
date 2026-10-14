@@ -81,23 +81,19 @@ private struct RootView: View {
             )
             .ignoresSafeArea()
 
-            VStack(spacing: 18) {
-                ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(colors: [Color.accentColor, Color.accentColor.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
-                        )
-                        .frame(width: 92, height: 92)
-                        .shadow(color: Color.accentColor.opacity(0.5), radius: 24, y: 8)
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 34, weight: .medium))
-                        .foregroundStyle(.white)
-                }
-                .scaleEffect(logoScale)
-                .opacity(logoOpacity)
+            VStack(spacing: 22) {
+                Image(systemName: "sparkles")
+                    .font(.system(size: 78, weight: .medium))
+                    .foregroundStyle(
+                        LinearGradient(colors: [Color.accentColor, Color.accentColor.opacity(0.65)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .shadow(color: Color.accentColor.opacity(0.45), radius: 30, y: 10)
+                    .scaleEffect(logoScale)
+                    .opacity(logoOpacity)
 
                 Text("Daily Mindset")
-                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .tracking(0.5)
                     .foregroundStyle(.white)
                     .opacity(textOpacity)
             }
