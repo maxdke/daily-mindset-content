@@ -47,7 +47,7 @@ struct ContentView: View {
                 }
                 .padding()
             }
-            .background(alignment: .center) { auroraBackground }
+            .background(alignment: .center) { appBackground }
             .navigationTitle("Daily Mindset")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -108,38 +108,12 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
     }
 
-    /// Neuer, dunkler App-Hintergrund ("Aurora Dark"): tiefer Indigo-/Schwarz-Verlauf mit
-    /// zwei weichen Farbflecken (violett oben links, gold unten rechts) – angelehnt an den
-    /// "Classic"-Look der Widgets, damit App und Widget wie aus einem Guss wirken.
-    private var auroraBackground: some View {
-        ZStack {
-            LinearGradient(
-                colors: [
-                    Color(red: 0x12 / 255, green: 0x0C / 255, blue: 0x28 / 255),
-                    Color(red: 0x0A / 255, green: 0x07 / 255, blue: 0x16 / 255),
-                    Color(red: 0x03 / 255, green: 0x02 / 255, blue: 0x04 / 255)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-
-            GeometryReader { proxy in
-                Circle()
-                    .fill(Color(red: 0x4C / 255, green: 0x3A / 255, blue: 0x99 / 255))
-                    .frame(width: 260, height: 260)
-                    .blur(radius: 70)
-                    .opacity(0.30)
-                    .position(x: 20, y: 40)
-
-                Circle()
-                    .fill(Color(red: 0x8A / 255, green: 0x64 / 255, blue: 0x20 / 255))
-                    .frame(width: 240, height: 240)
-                    .blur(radius: 80)
-                    .opacity(0.18)
-                    .position(x: proxy.size.width - 40, y: 220)
-            }
-        }
-        .ignoresSafeArea()
+    /// App-Hintergrund im neuen "Noir Editorial"-Look (Max' Wahl): flaches, fast
+    /// reines Schwarz ohne Farbverlauf oder Glanzeffekte – bewusst nüchtern und
+    /// konsequent in Schwarz-Weiß-Grau gehalten, kein Lila/Gold mehr wie zuvor.
+    private var appBackground: some View {
+        Color(red: 0x0A / 255, green: 0x0A / 255, blue: 0x0A / 255)
+            .ignoresSafeArea()
     }
 
     /// Kleines Streak-Badge über der Spruch-Karte: "X Tage in Folge" mit Flammen-Icon.
@@ -272,8 +246,8 @@ struct ContentView: View {
                 .padding(.trailing, 82)
 
                 Rectangle()
-                    .fill(Color.accentColor)
-                    .frame(width: 32, height: 2)
+                    .fill(Color.primary)
+                    .frame(width: 40, height: 3)
 
                 Text(quote.text)
                     .font(viewModel.quoteFont.font(textStyle: .title2, size: 22, weight: .medium))
@@ -287,6 +261,11 @@ struct ContentView: View {
                         .font(viewModel.quoteFont.font(textStyle: .subheadline, size: 15, weight: .regular))
                         .foregroundStyle(.secondary)
                 }
+
+                Rectangle()
+                    .fill(Color.primary)
+                    .frame(width: 40, height: 3)
+                    .padding(.top, 4)
             } else {
                 VStack(spacing: 8) {
                     Image(systemName: "text.badge.plus")
@@ -399,24 +378,23 @@ struct ContentView: View {
                         .fontWeight(.semibold)
                 }
                 .font(.subheadline)
-                .foregroundStyle(isActive ? Color.accentColor : (isPremium ? .white : .secondary))
+                .fontWeight(.semibold)
+                .textCase(.uppercase)
+                .tracking(0.8)
+                .foregroundStyle(isActive ? Color.accentColor : (isPremium ? Color.primary : .secondary))
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 14)
                 .background(
                     Capsule()
-                        .fill(
-                            isActive
-                                ? AnyShapeStyle(Color.accentColor.opacity(0.12))
-                                : (isPremium
-                                    ? AnyShapeStyle(LinearGradient(colors: [Color.accentColor, Color.accentColor.opacity(0.75)], startPoint: .leading, endPoint: .trailing))
-                                    : AnyShapeStyle(Color.primary.opacity(0.06)))
-                        )
+                        .fill(isActive ? Color.accentColor.opacity(0.12) : Color.clear)
                 )
                 .overlay(
                     Capsule()
-                        .strokeBorder(isActive ? Color.accentColor.opacity(0.4) : .clear, lineWidth: 1)
+                        .strokeBorder(
+                            isActive ? Color.accentColor.opacity(0.5) : (isPremium ? Color.primary : Color.primary.opacity(0.25)),
+                            lineWidth: 1.4
+                        )
                 )
-                .shadow(color: (isPremium && !isActive) ? Color.accentColor.opacity(0.35) : .clear, radius: 14, y: 6)
             }
             .buttonStyle(.plain)
             .animation(.easeInOut(duration: 0.2), value: isActive)

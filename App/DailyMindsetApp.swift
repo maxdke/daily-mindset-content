@@ -70,24 +70,14 @@ private struct RootView: View {
 
     private var splashView: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color(red: 0x12 / 255, green: 0x0C / 255, blue: 0x28 / 255),
-                    Color(red: 0x0A / 255, green: 0x07 / 255, blue: 0x16 / 255),
-                    Color(red: 0x03 / 255, green: 0x02 / 255, blue: 0x04 / 255)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            Color(red: 0x0A / 255, green: 0x0A / 255, blue: 0x0A / 255)
+                .ignoresSafeArea()
 
             VStack(spacing: 22) {
                 Image(systemName: "sparkles")
                     .font(.system(size: 78, weight: .medium))
-                    .foregroundStyle(
-                        LinearGradient(colors: [Color.accentColor, Color.accentColor.opacity(0.65)], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    )
-                    .shadow(color: Color.accentColor.opacity(0.45), radius: 30, y: 10)
+                    .foregroundStyle(.white)
+                    .shadow(color: .white.opacity(0.25), radius: 30, y: 10)
                     .scaleEffect(logoScale)
                     .opacity(logoOpacity)
 
