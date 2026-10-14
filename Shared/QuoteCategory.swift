@@ -8,6 +8,11 @@ enum QuoteCategory: String, CaseIterable, Codable, Identifiable {
     case discipline
     case fitness
     case gratitude
+    /// Vom Nutzer selbst geschriebene Sprüche (siehe QuoteStore.customQuotes).
+    /// Normalerweise nicht Teil der Tagesrotation, kann aber in der Kategorie-Auswahl
+    /// aktiviert werden (Premium) – dann bezieht QuoteStore.quote(for:allowedCategories:)
+    /// die eigenen Sprüche mit in den Auswahl-Pool ein (siehe dort).
+    case custom
 
     var id: String { rawValue }
 
@@ -18,6 +23,7 @@ enum QuoteCategory: String, CaseIterable, Codable, Identifiable {
         case .discipline: return "Disziplin"
         case .fitness: return "Fitness"
         case .gratitude: return "Dankbarkeit"
+        case .custom: return "Eigene"
         }
     }
 
@@ -28,6 +34,7 @@ enum QuoteCategory: String, CaseIterable, Codable, Identifiable {
         case .discipline: return "flame.fill"
         case .fitness: return "figure.run"
         case .gratitude: return "heart.fill"
+        case .custom: return "pencil.and.scribble"
         }
     }
 

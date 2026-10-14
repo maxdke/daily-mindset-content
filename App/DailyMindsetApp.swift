@@ -4,11 +4,15 @@ import WidgetKit
 @main
 struct DailyMindsetApp: App {
     @StateObject private var subscriptionManager = SubscriptionManager.shared
+    @StateObject private var notificationManager = NotificationManager.shared
+    @StateObject private var iconManager = IconManager.shared
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(subscriptionManager)
+                .environmentObject(notificationManager)
+                .environmentObject(iconManager)
                 .task {
                     // Beim App-Start: frische Sprüche holen (falls fällig) und
                     // das Widget direkt informieren, damit es nicht auf den
@@ -17,6 +21,7 @@ struct DailyMindsetApp: App {
                         WidgetCenter.shared.reloadAllTimelines()
                     }
                     BackgroundRefreshManager.scheduleNextRefresh()
+                    await notificationManager.refreshAuthorizationStatus()
                 }
         }
         .backgroundTask(.appRefresh(BackgroundRefreshManager.taskIdentifier)) {

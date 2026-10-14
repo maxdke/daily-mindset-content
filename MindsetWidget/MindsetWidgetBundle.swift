@@ -17,6 +17,6 @@ struct MindsetWidget: Widget {
         }
         .configurationDisplayName("Daily Mindset")
         .description("Täglich ein neuer Mindset-Spruch auf deinem Homescreen.")
-        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular, .accessoryCircular, .accessoryInline])
     }
 }
