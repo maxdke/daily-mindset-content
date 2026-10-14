@@ -20,6 +20,8 @@ final class QuoteStore {
         static let widgetBackgroundImageData = "widgetBackgroundImageData"
         static let customTextColorHex = "customTextColorHex"
         static let quoteFont = "quoteFont"
+        static let glowBorderEnabled = "glowBorderEnabled"
+        static let glowBorderColorHex = "glowBorderColorHex"
         static let favoriteQuoteIDs = "favoriteQuoteIDs"
         static let pinnedQuoteID = "pinnedQuoteID"
         static let widgetOverrideQuoteID = "widgetOverrideQuoteID"
@@ -107,6 +109,34 @@ final class QuoteStore {
                 defaults.removeObject(forKey: Keys.customTextColorHex)
             }
         }
+    }
+
+    /// Leuchtender Rand ums Widget (Premium-Feature, siehe MindsetWidgetEntryView) –
+    /// unabhängig vom gewählten Widget-Design frei an-/ausschaltbar und in der Farbe
+    /// wählbar. Default (noch nie aktiv gewählt): wie bisher nur beim Design "Neon Glow"
+    /// automatisch an, bei allen anderen aus – damit sich am bestehenden Look nichts
+    /// ändert, solange niemand aktiv etwas umstellt.
+    var glowBorderEnabled: Bool {
+        get {
+            if let stored = defaults.object(forKey: Keys.glowBorderEnabled) as? Bool {
+                return stored
+            }
+            return selectedWidgetStyle == .neon
+        }
+        set { defaults.set(newValue, forKey: Keys.glowBorderEnabled) }
+    }
+
+    /// Farbe des leuchtenden Rands. Default (noch nie gesetzt): das bisherige
+    /// Neon-Türkis, damit bestehende "Neon Glow"-Nutzer keinen Farbsprung sehen.
+    var glowBorderColor: Color {
+        get {
+            guard let hex = defaults.string(forKey: Keys.glowBorderColorHex),
+                  let color = Color(hexString: hex) else {
+                return Color(red: 0.31, green: 0.90, blue: 1.0)
+            }
+            return color
+        }
+        set { defaults.set(newValue.hexString, forKey: Keys.glowBorderColorHex) }
     }
 
     /// Frei wählbare Schriftart für den Spruchtext (Premium-Feature, siehe QuoteFont) –

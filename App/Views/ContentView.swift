@@ -604,6 +604,39 @@ struct ContentView: View {
             // gekoppelt) – daher immer sichtbar, unabhängig vom gewählten Design.
             quoteFontPicker
                 .padding(.top, 12)
+
+            // Leuchtender Rand ist wie Textfarbe/Schriftart global – unabhängig vom
+            // gewählten Widget-Design frei an-/ausschaltbar und einfärbbar.
+            if subscriptionManager.isPremium {
+                glowBorderPicker
+                    .padding(.top, 12)
+            }
+        }
+    }
+
+    /// Leuchtender Rand ums Widget (Premium, siehe QuoteStore.glowBorderEnabled/
+    /// glowBorderColor): unabhängig vom gewählten Widget-Design frei an-/ausschaltbar
+    /// und in der Farbe wählbar.
+    private var glowBorderPicker: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Toggle(isOn: Binding(
+                get: { viewModel.glowBorderEnabled },
+                set: { viewModel.setGlowBorderEnabled($0, isPremium: subscriptionManager.isPremium) }
+            )) {
+                Text("Leuchtender Rand")
+                    .font(.subheadline)
+            }
+            .tint(Color.accentColor)
+
+            if viewModel.glowBorderEnabled {
+                ColorPicker(selection: Binding(
+                    get: { viewModel.glowBorderColor },
+                    set: { viewModel.setGlowBorderColor($0, isPremium: subscriptionManager.isPremium) }
+                ), supportsOpacity: false) {
+                    Text("Randfarbe")
+                        .font(.subheadline)
+                }
+            }
         }
     }
 

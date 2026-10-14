@@ -10,6 +10,8 @@ final class AppViewModel: ObservableObject {
     @Published private(set) var selectedWidgetStyle: WidgetStyle
     @Published private(set) var customTextColor: Color?
     @Published private(set) var quoteFont: QuoteFont
+    @Published private(set) var glowBorderEnabled: Bool
+    @Published private(set) var glowBorderColor: Color
     @Published private(set) var hasCustomBackground: Bool
     @Published private(set) var customBackgroundThumbnail: UIImage?
     @Published private(set) var favoriteQuoteIDs: Set<String>
@@ -24,6 +26,8 @@ final class AppViewModel: ObservableObject {
         selectedWidgetStyle = store.selectedWidgetStyle
         customTextColor = store.customTextColor
         quoteFont = store.quoteFont
+        glowBorderEnabled = store.glowBorderEnabled
+        glowBorderColor = store.glowBorderColor
         hasCustomBackground = store.hasCustomBackgroundImage()
         customBackgroundThumbnail = store.loadWidgetBackgroundImage()
         favoriteQuoteIDs = store.favoriteQuoteIDs
@@ -131,6 +135,23 @@ final class AppViewModel: ObservableObject {
         guard isPremium else { return }
         quoteFont = font
         store.quoteFont = font
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    /// Premium-Feature: leuchtender Rand ums Widget an-/ausschalten (siehe
+    /// QuoteStore.glowBorderEnabled) – unabhängig vom gewählten Widget-Design.
+    func setGlowBorderEnabled(_ enabled: Bool, isPremium: Bool) {
+        guard isPremium else { return }
+        glowBorderEnabled = enabled
+        store.glowBorderEnabled = enabled
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    /// Premium-Feature: Farbe des leuchtenden Rands (siehe QuoteStore.glowBorderColor).
+    func setGlowBorderColor(_ color: Color, isPremium: Bool) {
+        guard isPremium else { return }
+        glowBorderColor = color
+        store.glowBorderColor = color
         WidgetCenter.shared.reloadAllTimelines()
     }
 

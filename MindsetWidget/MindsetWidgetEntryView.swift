@@ -51,7 +51,7 @@ struct MindsetWidgetEntryView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .containerBackground(for: .widget) { backgroundGradient }
-        .overlay { neonGlowOverlay }
+        .overlay { glowBorderOverlay }
         .overlay(alignment: .bottomTrailing) {
             if !isPinned {
                 nextQuoteButton
@@ -83,7 +83,7 @@ struct MindsetWidgetEntryView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .containerBackground(for: .widget) { backgroundGradient }
-        .overlay { neonGlowOverlay }
+        .overlay { glowBorderOverlay }
         .overlay(alignment: .bottomTrailing) {
             if !isPinned {
                 nextQuoteButton
@@ -91,15 +91,18 @@ struct MindsetWidgetEntryView: View {
         }
     }
 
-    /// Dezenter leuchtender Rand speziell für den "Neon Glow"-Stil (siehe WidgetStyle) –
-    /// ContainerRelativeShape übernimmt automatisch die vom System vorgegebene
-    /// Eckenrundung des Widgets, damit der Rand exakt an der echten Kontur anliegt.
+    /// Leuchtender Rand ums Widget – frei an-/ausschaltbar und in der Farbe wählbar
+    /// (siehe QuoteStore.glowBorderEnabled/glowBorderColor), unabhängig vom gewählten
+    /// Widget-Design. ContainerRelativeShape übernimmt automatisch die vom System
+    /// vorgegebene Eckenrundung des Widgets, damit der Rand exakt an der echten
+    /// Kontur anliegt.
     @ViewBuilder
-    private var neonGlowOverlay: some View {
-        if entry.style == .neon {
+    private var glowBorderOverlay: some View {
+        if QuoteStore.shared.glowBorderEnabled {
+            let color = QuoteStore.shared.glowBorderColor
             ContainerRelativeShape()
-                .strokeBorder(entry.style.accentTextColor, lineWidth: 1.5)
-                .shadow(color: entry.style.accentTextColor.opacity(0.6), radius: 8)
+                .strokeBorder(color, lineWidth: 1.5)
+                .shadow(color: color.opacity(0.6), radius: 8)
         }
     }
 
