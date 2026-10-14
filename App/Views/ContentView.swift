@@ -38,11 +38,16 @@ struct ContentView: View {
                     nextQuoteCountdown
                     pinnedQuoteBanner
                     categoryPicker
+                        .padding(18)
+                        .background(RoundedRectangle(cornerRadius: 20).fill(.thinMaterial))
                     widgetStylePicker
+                        .padding(18)
+                        .background(RoundedRectangle(cornerRadius: 20).fill(.thinMaterial))
                     widgetInstructions
                 }
                 .padding()
             }
+            .background(alignment: .center) { auroraBackground }
             .navigationTitle("Daily Mindset")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -100,6 +105,41 @@ struct ContentView: View {
                 viewModel.recordDailyOpen()
             }
         }
+        .preferredColorScheme(.dark)
+    }
+
+    /// Neuer, dunkler App-Hintergrund ("Aurora Dark"): tiefer Indigo-/Schwarz-Verlauf mit
+    /// zwei weichen Farbflecken (violett oben links, gold unten rechts) – angelehnt an den
+    /// "Classic"-Look der Widgets, damit App und Widget wie aus einem Guss wirken.
+    private var auroraBackground: some View {
+        ZStack {
+            LinearGradient(
+                colors: [
+                    Color(red: 0x12 / 255, green: 0x0C / 255, blue: 0x28 / 255),
+                    Color(red: 0x0A / 255, green: 0x07 / 255, blue: 0x16 / 255),
+                    Color(red: 0x03 / 255, green: 0x02 / 255, blue: 0x04 / 255)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            GeometryReader { proxy in
+                Circle()
+                    .fill(Color(red: 0x4C / 255, green: 0x3A / 255, blue: 0x99 / 255))
+                    .frame(width: 260, height: 260)
+                    .blur(radius: 70)
+                    .opacity(0.30)
+                    .position(x: 20, y: 40)
+
+                Circle()
+                    .fill(Color(red: 0x8A / 255, green: 0x64 / 255, blue: 0x20 / 255))
+                    .frame(width: 240, height: 240)
+                    .blur(radius: 80)
+                    .opacity(0.18)
+                    .position(x: proxy.size.width - 40, y: 220)
+            }
+        }
+        .ignoresSafeArea()
     }
 
     /// Kleines Streak-Badge über der Spruch-Karte: "X Tage in Folge" mit Flammen-Icon.
@@ -361,15 +401,22 @@ struct ContentView: View {
                 .font(.subheadline)
                 .foregroundStyle(isActive ? Color.accentColor : (isPremium ? .white : .secondary))
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
+                .padding(.vertical, 14)
                 .background(
-                    RoundedRectangle(cornerRadius: 14)
-                        .fill(isActive ? Color.accentColor.opacity(0.12) : (isPremium ? Color.accentColor : Color.primary.opacity(0.06)))
+                    Capsule()
+                        .fill(
+                            isActive
+                                ? AnyShapeStyle(Color.accentColor.opacity(0.12))
+                                : (isPremium
+                                    ? AnyShapeStyle(LinearGradient(colors: [Color.accentColor, Color.accentColor.opacity(0.75)], startPoint: .leading, endPoint: .trailing))
+                                    : AnyShapeStyle(Color.primary.opacity(0.06)))
+                        )
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 14)
+                    Capsule()
                         .strokeBorder(isActive ? Color.accentColor.opacity(0.4) : .clear, lineWidth: 1)
                 )
+                .shadow(color: (isPremium && !isActive) ? Color.accentColor.opacity(0.35) : .clear, radius: 14, y: 6)
             }
             .buttonStyle(.plain)
             .animation(.easeInOut(duration: 0.2), value: isActive)
