@@ -3,21 +3,13 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
+    @ObservedObject var viewModel: AppViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
-    @StateObject private var viewModel = AppViewModel()
     /// Damit Spruch/Streak nicht veraltet stehen bleiben, wenn die App über Nacht nur
     /// in den Hintergrund (nicht komplett beendet) und morgens wieder in den Vordergrund
     /// geholt wird – .task/.onAppear laufen sonst nur einmal pro kaltem App-Start.
     @Environment(\.scenePhase) private var scenePhase
     @State private var showPaywall = false
-    @State private var showSettings = false
-    @State private var showFavorites = false
-    @State private var showReflectionHistory = false
-    /// Entwurfstext fürs Reflexions-Eingabefeld unter dem Tagesspruch; wird beim
-    /// Swipen zu einem anderen Spruch bzw. beim Laden des Tagesspruchs mit einer
-    /// ggf. schon vorhandenen Notiz vorausgefüllt (siehe .onChange/.task unten).
-    @State private var showPhotoPicker = false
-    @State private var photoPickerItem: PhotosPickerItem?
     /// Eigene Sprüche lassen sich direkt aus der Kategorien-Liste heraus hinzufügen
     /// (kleines "+" bei "Eigene"), ohne erst ins "Sprüche"-Sheet wechseln zu müssen.
     @State private var showAddCustomQuote = false
@@ -46,43 +38,16 @@ struct ContentView: View {
                     categoryPicker
                         .padding(18)
                         .background(RoundedRectangle(cornerRadius: 20).fill(.thinMaterial))
-                    widgetStylePicker
                     widgetInstructions
                 }
                 .padding()
             }
             .background(alignment: .center) { appBackground }
             .navigationTitle("Daily Mindset")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showSettings = true
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showFavorites = true
-                    } label: {
-                        Image(systemName: "star")
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showReflectionHistory = true
-                    } label: {
-                        Image(systemName: "text.book.closed")
-                    }
-                }
-            }
             .sheet(isPresented: $showPaywall) { PaywallView() }
             .sheet(item: $shareItem) { item in
                 ActivityView(activityItems: [item.url])
             }
-            .sheet(isPresented: $showSettings) { SettingsView() }
-            .sheet(isPresented: $showFavorites) { FavoritesView(viewModel: viewModel) }
-            .sheet(isPresented: $showReflectionHistory) { ReflectionHistoryView(viewModel: viewModel) }
             .sheet(isPresented: $showAddCustomQuote) {
                 AddCustomQuoteView { text, author in
                     viewModel.addCustomQuote(text: text, author: author, isPremium: subscriptionManager.isPremium)
@@ -90,16 +55,6 @@ struct ContentView: View {
             }
             .sheet(item: $categoryForGallery) { category in
                 CategoryBackgroundGalleryView(category: category, viewModel: viewModel, isPremium: subscriptionManager.isPremium)
-            }
-            .photosPicker(isPresented: $showPhotoPicker, selection: $photoPickerItem, matching: .images)
-            .onChange(of: photoPickerItem) { _, newItem in
-                guard let newItem else { return }
-                Task {
-                    if let data = try? await newItem.loadTransferable(type: Data.self) {
-                        viewModel.saveCustomBackground(data: data, isPremium: subscriptionManager.isPremium)
-                    }
-                    photoPickerItem = nil
-                }
             }
             .task(id: subscriptionManager.isPremium) {
                 viewModel.refreshTodaysQuote(isPremium: subscriptionManager.isPremium)
@@ -639,6 +594,58 @@ struct ContentView: View {
         }
     }
 
+
+    private var widgetInstructions: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label("Widget hinzufügen", systemImage: "square.grid.2x2")
+                .font(.headline)
+            Text("Homescreen gedrückt halten → „+“ oben links → „Daily Mindset“ suchen → Größe wählen → Hinzufügen.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 16).fill(.thinMaterial))
+    }
+}
+
+/// Eigene Design-Seite (Max' Wunsch, siehe "4 Tabs"-Entscheidung): bündelt
+/// Widget-Design, Textfarbe, Schriftart und Leuchtender Rand abseits der
+/// Hauptseite, über die Tab-Leiste erreichbar. Bewusst im selben File wie
+/// ContentView (wie FavoritesView unten) – alles reguläre, unabhängige Views.
+struct DesignView: View {
+    @ObservedObject var viewModel: AppViewModel
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @State private var showPaywall = false
+    @State private var showPhotoPicker = false
+    @State private var photoPickerItem: PhotosPickerItem?
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                widgetStylePicker
+                    .padding()
+            }
+            .background(alignment: .center) {
+                Color(red: 0x0A / 255, green: 0x0A / 255, blue: 0x0A / 255)
+                    .ignoresSafeArea()
+            }
+            .navigationTitle("Design")
+            .sheet(isPresented: $showPaywall) { PaywallView() }
+            .photosPicker(isPresented: $showPhotoPicker, selection: $photoPickerItem, matching: .images)
+            .onChange(of: photoPickerItem) { _, newItem in
+                guard let newItem else { return }
+                Task {
+                    if let data = try? await newItem.loadTransferable(type: Data.self) {
+                        viewModel.saveCustomBackground(data: data, isPremium: subscriptionManager.isPremium)
+                    }
+                    photoPickerItem = nil
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
+    }
+
     /// Jede Design-Option (Widget-Design, Textfarbe, Schriftart, Leuchtender Rand)
     /// steht als eigene, in sich geschlossene Karte mit weißem LED-Glow-Rand da,
     /// statt in einem einzigen grossen Block zu stecken (Max' Wunsch) – Optik wie
@@ -930,19 +937,11 @@ struct ContentView: View {
             }
         }
     }
+}
 
-    private var widgetInstructions: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Label("Widget hinzufügen", systemImage: "square.grid.2x2")
-                .font(.headline)
-            Text("Homescreen gedrückt halten → „+“ oben links → „Daily Mindset“ suchen → Größe wählen → Hinzufügen.")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(RoundedRectangle(cornerRadius: 16).fill(.thinMaterial))
-    }
+#Preview {
+    DesignView(viewModel: AppViewModel())
+        .environmentObject(SubscriptionManager.shared)
 }
 
 /// Liste der gespeicherten Lieblingssprüche UND aller bereits erschienenen Sprüche,
@@ -1151,11 +1150,10 @@ struct FavoritesView: View {
 }
 
 /// Privates Archiv aller bisherigen Mini-Reflexionen (siehe
-/// ContentView.reflectionPrompt), neueste zuerst. Als Sheet über das
-/// Buch-Symbol oben rechts erreichbar, genau wie FavoritesView.
+/// ContentView.reflectionPrompt), neueste zuerst. Eigener Tab in der
+/// Tab-Leiste (RootTabView), kein Sheet mehr.
 struct ReflectionHistoryView: View {
     @ObservedObject var viewModel: AppViewModel
-    @Environment(\.dismiss) private var dismiss
 
     private var sortedReflections: [Reflection] {
         viewModel.reflections.sorted { $0.createdAt > $1.createdAt }
@@ -1185,13 +1183,8 @@ struct ReflectionHistoryView: View {
                 }
             }
             .navigationTitle("Reflexionen")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Fertig") { dismiss() }
-                }
-            }
         }
+        .preferredColorScheme(.dark)
     }
 
     private func reflectionRow(_ reflection: Reflection) -> some View {
@@ -1228,7 +1221,8 @@ struct ReflectionHistoryView: View {
 }
 
 #Preview {
-    ContentView().environmentObject(SubscriptionManager.shared)
+    ContentView(viewModel: AppViewModel())
+        .environmentObject(SubscriptionManager.shared)
 }
 
 /// Identifiable-Wrapper, damit .sheet(item:) die gerenderte Bild-Datei

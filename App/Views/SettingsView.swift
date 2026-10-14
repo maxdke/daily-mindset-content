@@ -1,15 +1,22 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject var viewModel: AppViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @EnvironmentObject private var notificationManager: NotificationManager
     @EnvironmentObject private var iconManager: IconManager
-    @Environment(\.dismiss) private var dismiss
     @State private var showPaywall = false
 
     var body: some View {
         NavigationStack {
             List {
+                Section {
+                    NavigationLink {
+                        FavoritesView(viewModel: viewModel)
+                    } label: {
+                        Label("Favoriten", systemImage: "star")
+                    }
+                }
                 Section {
                     appIconPicker
                 } header: {
@@ -77,12 +84,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .navigationTitle("Einstellungen")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Fertig") { dismiss() }
-                }
-            }
+            .navigationTitle("Mehr")
             .sheet(isPresented: $showPaywall) { PaywallView() }
         }
     }
@@ -152,7 +154,7 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(viewModel: AppViewModel())
         .environmentObject(SubscriptionManager.shared)
         .environmentObject(NotificationManager.shared)
         .environmentObject(IconManager.shared)

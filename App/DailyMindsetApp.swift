@@ -43,7 +43,7 @@ private struct RootView: View {
 
     var body: some View {
         ZStack {
-            ContentView()
+            RootTabView()
                 .opacity(showSplash ? 0 : 1)
 
             if showSplash {
@@ -88,5 +88,29 @@ private struct RootView: View {
                     .opacity(textOpacity)
             }
         }
+    }
+}
+
+
+/// Hauptnavigation der App (Max' Wunsch): eine Tab-Leiste mit vier Bereichen,
+/// damit die wachsende Zahl an Design-Optionen nicht mehr alle auf der Hauptseite
+/// liegen. Der AppViewModel-Store wird hier EINMAL erzeugt und an jeden Tab
+/// weitergereicht, damit z.B. eine neue Reflexion oder ein Design-Wechsel überall
+/// sofort konsistent ankommt.
+private struct RootTabView: View {
+    @StateObject private var viewModel = AppViewModel()
+
+    var body: some View {
+        TabView {
+            ContentView(viewModel: viewModel)
+                .tabItem { Label("Heute", systemImage: "house") }
+            DesignView(viewModel: viewModel)
+                .tabItem { Label("Design", systemImage: "paintpalette") }
+            ReflectionHistoryView(viewModel: viewModel)
+                .tabItem { Label("Reflexionen", systemImage: "text.book.closed") }
+            SettingsView(viewModel: viewModel)
+                .tabItem { Label("Mehr", systemImage: "ellipsis.circle") }
+        }
+        .preferredColorScheme(.dark)
     }
 }
