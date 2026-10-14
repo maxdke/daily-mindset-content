@@ -38,6 +38,11 @@ struct ContentView: View {
                     categoryPicker
                         .padding(18)
                         .background(RoundedRectangle(cornerRadius: 20).fill(.thinMaterial))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .strokeBorder(Color.primary, lineWidth: 1.5)
+                        )
+                        .shadow(color: Color.primary.opacity(0.45), radius: 14)
                     widgetInstructions
                 }
                 .padding()
@@ -107,8 +112,9 @@ struct ContentView: View {
                 Capsule().fill(Color.accentColor.opacity(0.12))
             )
             .overlay(
-                Capsule().strokeBorder(Color.accentColor.opacity(0.3), lineWidth: 1)
+                Capsule().strokeBorder(Color.primary, lineWidth: 1.5)
             )
+            .shadow(color: Color.primary.opacity(0.4), radius: 10)
         }
     }
 
@@ -258,9 +264,9 @@ struct ContentView: View {
         .background(RoundedRectangle(cornerRadius: 24).fill(.thinMaterial))
         .overlay(
             RoundedRectangle(cornerRadius: 24)
-                .strokeBorder(Color.accentColor.opacity(0.25), lineWidth: 1)
+                .strokeBorder(Color.primary, lineWidth: 1.5)
         )
-        .shadow(color: .black.opacity(0.12), radius: 16, y: 8)
+        .shadow(color: Color.primary.opacity(0.45), radius: 16)
         // Stern (Favorit) oben rechts. Die Widget-Aktivierung passiert jetzt über
         // den deutlich sichtbaren "Aktiv"-Button unter der Karte statt über ein
         // kleines Pin-Icon hier.
@@ -374,8 +380,9 @@ struct ContentView: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 18)
-                    .strokeBorder(Color.primary.opacity(0.16), lineWidth: 1)
+                    .strokeBorder(Color.primary, lineWidth: 1.5)
             )
+            .shadow(color: Color.primary.opacity(0.45), radius: 14)
         }
     }
 
@@ -424,6 +431,10 @@ struct ContentView: View {
                             isActive ? Color.accentColor.opacity(0.5) : (isPremium ? Color.primary : Color.primary.opacity(0.25)),
                             lineWidth: 1.4
                         )
+                )
+                .shadow(
+                    color: (isActive ? Color.accentColor : Color.primary).opacity(isPremium ? 0.4 : 0),
+                    radius: 12
                 )
             }
             .buttonStyle(.plain)
@@ -497,6 +508,11 @@ struct ContentView: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
             .background(RoundedRectangle(cornerRadius: 12).fill(Color.accentColor.opacity(0.1)))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .strokeBorder(Color.primary, lineWidth: 1.5)
+            )
+            .shadow(color: Color.primary.opacity(0.4), radius: 10)
         }
     }
 
@@ -606,6 +622,11 @@ struct ContentView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 16).fill(.thinMaterial))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .strokeBorder(Color.primary, lineWidth: 1.5)
+        )
+        .shadow(color: Color.primary.opacity(0.45), radius: 14)
     }
 }
 
