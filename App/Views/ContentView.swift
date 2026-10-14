@@ -41,8 +41,6 @@ struct ContentView: View {
                         .padding(18)
                         .background(RoundedRectangle(cornerRadius: 20).fill(.thinMaterial))
                     widgetStylePicker
-                        .padding(18)
-                        .background(RoundedRectangle(cornerRadius: 20).fill(.thinMaterial))
                     widgetInstructions
                 }
                 .padding()
@@ -564,54 +562,83 @@ struct ContentView: View {
         }
     }
 
+    /// Jede Design-Option (Widget-Design, Textfarbe, Schriftart, Leuchtender Rand)
+    /// steht als eigene, in sich geschlossene Karte mit weißem LED-Glow-Rand da,
+    /// statt in einem einzigen grossen Block zu stecken (Max' Wunsch) – Optik wie
+    /// die "Glow Accent Cards" aus dem zuvor gezeigten Design-Entwurf.
     private var widgetStylePicker: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack {
-                Text("Widget-Design")
-                    .font(.headline)
-                if !subscriptionManager.isPremium {
-                    Image(systemName: "lock.fill")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .padding(.bottom, 10)
+        VStack(alignment: .leading, spacing: 16) {
+            settingsCard {
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Text("Widget-Design")
+                            .font(.headline)
+                        if !subscriptionManager.isPremium {
+                            Image(systemName: "lock.fill")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .padding(.bottom, 10)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach(WidgetStyle.allCases) { style in
-                        widgetStyleSwatch(style)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            ForEach(WidgetStyle.allCases) { style in
+                                widgetStyleSwatch(style)
+                            }
+                        }
+                        .padding(.horizontal, 2)
+                    }
+
+                    if subscriptionManager.isPremium && !viewModel.hasCustomBackground {
+                        Text("Tipp: Bei „Foto“ kannst du ein eigenes Bild als Hintergrund wählen – es bleibt nur auf deinem Gerät.")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .padding(.top, 8)
                     }
                 }
-                .padding(.horizontal, 2)
-            }
-
-            if subscriptionManager.isPremium && !viewModel.hasCustomBackground {
-                Text("Tipp: Bei „Foto“ kannst du ein eigenes Bild als Hintergrund wählen – es bleibt nur auf deinem Gerät.")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .padding(.top, 8)
             }
 
             // Eigene Textfarbe ist global (wie die Schriftart) – wirkt auf jedes
             // Widget-Design, nicht nur auf "Foto".
             if subscriptionManager.isPremium {
-                customTextColorPicker
-                    .padding(.top, 12)
+                settingsCard {
+                    customTextColorPicker
+                }
             }
 
             // Schriftart ist global (anders als die Textfarbe nicht an "Foto"
             // gekoppelt) – daher immer sichtbar, unabhängig vom gewählten Design.
-            quoteFontPicker
-                .padding(.top, 12)
+            settingsCard {
+                quoteFontPicker
+            }
 
             // Leuchtender Rand ist wie Textfarbe/Schriftart global – unabhängig vom
             // gewählten Widget-Design frei an-/ausschaltbar und einfärbbar.
             if subscriptionManager.isPremium {
-                glowBorderPicker
-                    .padding(.top, 12)
+                settingsCard {
+                    glowBorderPicker
+                }
             }
         }
+    }
+
+    /// Gemeinsame "Glow Accent Card"-Hülle für die einzelnen Design-Optionen: dezent
+    /// getönter Hintergrund plus weißer LED-Rand mit Glow, im selben Vokabular wie
+    /// die einzelnen Kategorien-Kacheln (categoryTile) gehalten.
+    @ViewBuilder
+    private func settingsCard<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
+        content()
+            .padding(18)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.primary.opacity(0.05))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .strokeBorder(Color.primary, lineWidth: 1.5)
+            )
+            .shadow(color: Color.primary.opacity(0.45), radius: 14)
     }
 
     /// Leuchtender Rand ums Widget (Premium, siehe QuoteStore.glowBorderEnabled/
