@@ -12,6 +12,10 @@ struct ContentView: View {
     @State private var showPaywall = false
     @State private var showSettings = false
     @State private var showFavorites = false
+    @State private var showReflectionHistory = false
+    /// Entwurfstext fürs Reflexions-Eingabefeld unter dem Tagesspruch; wird beim
+    /// Swipen zu einem anderen Spruch bzw. beim Laden des Tagesspruchs mit einer
+    /// ggf. schon vorhandenen Notiz vorausgefüllt (siehe .onChange/.task unten).
     @State private var showPhotoPicker = false
     @State private var photoPickerItem: PhotosPickerItem?
     /// Eigene Sprüche lassen sich direkt aus der Kategorien-Liste heraus hinzufügen
@@ -27,6 +31,7 @@ struct ContentView: View {
     /// Feature, siehe quoteCard-Overlay – bewusst kein Premium-Gate, da jedes
     /// geteilte Bild quasi kostenlose Werbung für die App ist).
     @State private var shareItem: ShareableImage?
+    @State private var reflectionText: String = ""
 
     var body: some View {
         NavigationStack {
@@ -34,6 +39,7 @@ struct ContentView: View {
                 VStack(spacing: 24) {
                     streakBadge
                     quoteCard
+                    reflectionPrompt
                     activateButton
                     nextQuoteCountdown
                     pinnedQuoteBanner
@@ -62,6 +68,13 @@ struct ContentView: View {
                         Image(systemName: "star")
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showReflectionHistory = true
+                    } label: {
+                        Image(systemName: "text.book.closed")
+                    }
+                }
             }
             .sheet(isPresented: $showPaywall) { PaywallView() }
             .sheet(item: $shareItem) { item in
@@ -69,6 +82,7 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showSettings) { SettingsView() }
             .sheet(isPresented: $showFavorites) { FavoritesView(viewModel: viewModel) }
+            .sheet(isPresented: $showReflectionHistory) { ReflectionHistoryView(viewModel: viewModel) }
             .sheet(isPresented: $showAddCustomQuote) {
                 AddCustomQuoteView { text, author in
                     viewModel.addCustomQuote(text: text, author: author, isPremium: subscriptionManager.isPremium)
@@ -89,6 +103,10 @@ struct ContentView: View {
             }
             .task(id: subscriptionManager.isPremium) {
                 viewModel.refreshTodaysQuote(isPremium: subscriptionManager.isPremium)
+                reflectionText = viewModel.reflection(forQuoteID: displayedQuote?.id ?? "")?.text ?? ""
+            }
+            .onChange(of: displayedQuoteID) { _, _ in
+                reflectionText = viewModel.reflection(forQuoteID: displayedQuote?.id ?? "")?.text ?? ""
             }
             .onAppear {
                 // Kostenloses Feature für alle Nutzer (siehe AppViewModel.recordDailyOpen) –
@@ -349,6 +367,65 @@ struct ContentView: View {
                 }
         )
         .animation(.easeInOut(duration: 0.2), value: displayedQuoteID)
+    }
+
+    /// Kleine Mini-Reflexion direkt unter dem Tagesspruch (kostenloses Feature,
+    /// siehe AppViewModel.saveReflection / ReflectionHistoryView): ein Satz dazu,
+    /// was der Spruch gerade bedeutet – sammelt sich im Reflexions-Archiv
+    /// (Buch-Symbol oben rechts). isSaved ist rein abgeleitet (kein eigener
+    /// Speicher-Status nötig): sobald der aktuelle Feldinhalt exakt der bereits
+    /// gespeicherten Notiz zu diesem Spruch entspricht, zeigt der Button einen
+    /// Haken statt des Pfeils.
+    @ViewBuilder
+    private var reflectionPrompt: some View {
+        if let quote = displayedQuote {
+            let trimmed = reflectionText.trimmingCharacters(in: .whitespacesAndNewlines)
+            let isSaved = !trimmed.isEmpty && viewModel.reflection(forQuoteID: quote.id)?.text == reflectionText
+
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 8) {
+                    Image(systemName: "pencil.line")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(.secondary)
+                    Text("Was bedeutet das heute für dich?")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.secondary)
+                }
+
+                HStack(spacing: 10) {
+                    TextField("Ein Satz reicht …", text: $reflectionText)
+                        .font(.subheadline)
+                        .onSubmit { saveReflection(for: quote) }
+
+                    Button {
+                        saveReflection(for: quote)
+                    } label: {
+                        Image(systemName: isSaved ? "checkmark" : "arrow.right")
+                            .font(.system(size: 13, weight: .bold))
+                            .foregroundStyle(.black)
+                            .frame(width: 30, height: 30)
+                            .background(Circle().fill(Color.primary))
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(trimmed.isEmpty)
+                    .opacity(trimmed.isEmpty ? 0.4 : 1)
+                }
+            }
+            .padding(16)
+            .background(
+                RoundedRectangle(cornerRadius: 18)
+                    .fill(Color.primary.opacity(0.05))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 18)
+                    .strokeBorder(Color.primary.opacity(0.16), lineWidth: 1)
+            )
+        }
+    }
+
+    private func saveReflection(for quote: Quote) {
+        viewModel.saveReflection(text: reflectionText, for: quote)
     }
 
     /// Deutlicher, beschrifteter Button statt eines kleinen Pin-Icons: zeigt klar
@@ -1070,6 +1147,83 @@ struct FavoritesView: View {
             .font(.system(size: 16))
         }
         .padding(.vertical, 4)
+    }
+}
+
+/// Privates Archiv aller bisherigen Mini-Reflexionen (siehe
+/// ContentView.reflectionPrompt), neueste zuerst. Als Sheet über das
+/// Buch-Symbol oben rechts erreichbar, genau wie FavoritesView.
+struct ReflectionHistoryView: View {
+    @ObservedObject var viewModel: AppViewModel
+    @Environment(\.dismiss) private var dismiss
+
+    private var sortedReflections: [Reflection] {
+        viewModel.reflections.sorted { $0.createdAt > $1.createdAt }
+    }
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                if sortedReflections.isEmpty {
+                    ContentUnavailableView(
+                        "Noch keine Reflexionen",
+                        systemImage: "text.book.closed",
+                        description: Text("Schreib unter dem Tagesspruch einen Satz dazu – er sammelt sich hier.")
+                    )
+                } else {
+                    List {
+                        ForEach(sortedReflections) { reflection in
+                            reflectionRow(reflection)
+                        }
+                        .onDelete { offsets in
+                            for index in offsets {
+                                viewModel.deleteReflection(sortedReflections[index])
+                            }
+                        }
+                    }
+                    .listStyle(.plain)
+                }
+            }
+            .navigationTitle("Reflexionen")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Fertig") { dismiss() }
+                }
+            }
+        }
+    }
+
+    private func reflectionRow(_ reflection: Reflection) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(Self.dateLabel(forDateKey: reflection.dateKey).uppercased())
+                .font(.caption2)
+                .fontWeight(.bold)
+                .foregroundStyle(Color.accentColor)
+            Text("„\(reflection.quoteText)“")
+                .font(.caption)
+                .italic()
+                .foregroundStyle(.secondary)
+            Text(reflection.text)
+                .font(.body)
+        }
+        .padding(.vertical, 4)
+    }
+
+    private static func dateLabel(forDateKey dateKey: String) -> String {
+        let keyFormatter = DateFormatter()
+        keyFormatter.dateFormat = "yyyy-MM-dd"
+        keyFormatter.timeZone = .current
+        guard let date = keyFormatter.date(from: dateKey) else { return "" }
+
+        let calendar = Calendar.current
+        if calendar.isDateInToday(date) { return "Heute" }
+        if calendar.isDateInYesterday(date) { return "Gestern" }
+
+        let displayFormatter = DateFormatter()
+        displayFormatter.dateFormat = "EEEE, d. MMMM"
+        displayFormatter.locale = Locale(identifier: "de_DE")
+        return displayFormatter.string(from: date)
     }
 }
 

@@ -18,6 +18,7 @@ final class AppViewModel: ObservableObject {
     @Published private(set) var pinnedQuoteID: String?
     @Published private(set) var currentStreak: Int
     @Published private(set) var customQuotes: [Quote]
+    @Published private(set) var reflections: [Reflection]
 
     private let store = QuoteStore.shared
 
@@ -34,6 +35,7 @@ final class AppViewModel: ObservableObject {
         pinnedQuoteID = store.pinnedQuoteID
         currentStreak = store.currentStreak
         customQuotes = store.customQuotes
+        reflections = store.reflections
     }
 
     /// Beim App-Start aufzurufen (siehe ContentView). Kostenloses Feature für
@@ -74,6 +76,28 @@ final class AppViewModel: ObservableObject {
         if shouldReloadWidget {
             WidgetCenter.shared.reloadAllTimelines()
         }
+    }
+
+    /// Speichert (oder aktualisiert) die kurze eigene Notiz zum übergebenen Spruch
+    /// (siehe ContentView.reflectionPrompt). Kostenloses Feature wie "Eigene
+    /// Sprüche" – kein Premium-Gate, soll zum täglichen Zurückkommen motivieren.
+    @discardableResult
+    func saveReflection(text: String, for quote: Quote) -> Bool {
+        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return false }
+        _ = store.addOrUpdateReflection(for: quote, text: text)
+        reflections = store.reflections
+        return true
+    }
+
+    func deleteReflection(_ reflection: Reflection) {
+        store.deleteReflection(id: reflection.id)
+        reflections = store.reflections
+    }
+
+    /// Bereits gespeicherte Notiz zu einer bestimmten quoteID, falls vorhanden –
+    /// damit das Eingabefeld beim Durchswipen/erneuten Öffnen vorausgefüllt ist.
+    func reflection(forQuoteID quoteID: String) -> Reflection? {
+        reflections.first { $0.quoteID == quoteID }
     }
 
     func refreshTodaysQuote(isPremium: Bool) {

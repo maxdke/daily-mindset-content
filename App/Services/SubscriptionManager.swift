@@ -18,6 +18,11 @@ final class SubscriptionManager: ObservableObject {
     @Published private(set) var products: [Product] = []
     @Published private(set) var isPremium: Bool = false
     @Published var lastError: String?
+    /// Ob der Nutzer für das jeweilige Produkt (Key = Product.id) noch ein
+    /// Einführungsangebot (z.B. kostenlose Testphase) bekommen kann – laut Apple pro
+    /// Abo-Gruppe und Apple-ID nur einmalig möglich. Separat je Produkt geprüft, damit
+    /// die Paywall niemandem ein Trial verspricht, das für ihn gar nicht mehr greift.
+    @Published private(set) var introOfferEligibility: [String: Bool] = [:]
 
     private var transactionListener: Task<Void, Never>?
 
@@ -37,9 +42,21 @@ final class SubscriptionManager: ObservableObject {
         do {
             products = try await Product.products(for: ProductID.allCases.map(\.rawValue))
                 .sorted { $0.price < $1.price }
+            await refreshIntroOfferEligibility()
         } catch {
             lastError = "Produkte konnten nicht geladen werden: \(error.localizedDescription)"
         }
+    }
+
+    /// Prüft für jedes geladene Abo-Produkt, ob noch ein Einführungsangebot (z.B.
+    /// kostenlose Testphase) zur Verfügung steht – siehe introOfferEligibility.
+    private func refreshIntroOfferEligibility() async {
+        var eligibility: [String: Bool] = [:]
+        for product in products {
+            guard let subscription = product.subscription else { continue }
+            eligibility[product.id] = await subscription.isEligibleForIntroOffer
+        }
+        introOfferEligibility = eligibility
     }
 
     func purchase(_ product: Product) async {
@@ -159,6 +176,28 @@ final class IconManager: ObservableObject {
                 guard error == nil else { return }
                 self?.currentIcon = icon
             }
+        }
+    }
+}
+
+/// Deutschsprachige Kurzbeschreibung eines "kostenlos testen"-Einführungsangebots,
+/// z.B. "7 Tage kostenlos" – nil, wenn es kein Trial ist (sondern z.B. ein
+/// vergünstigter Einführungspreis) oder kein Einführungsangebot konfiguriert ist.
+extension Product.SubscriptionOffer {
+    var freeTrialDescription: String? {
+        guard paymentMode == .freeTrial else { return nil }
+        let count = periodCount
+        switch period.unit {
+        case .day:
+            return count == 1 ? "1 Tag kostenlos" : "\(count) Tage kostenlos"
+        case .week:
+            return count == 1 ? "1 Woche kostenlos" : "\(count) Wochen kostenlos"
+        case .month:
+            return count == 1 ? "1 Monat kostenlos" : "\(count) Monate kostenlos"
+        case .year:
+            return count == 1 ? "1 Jahr kostenlos" : "\(count) Jahre kostenlos"
+        @unknown default:
+            return "Kostenlos testen"
         }
     }
 }

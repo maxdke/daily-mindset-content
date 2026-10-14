@@ -24,3 +24,19 @@ struct QuoteBatch: Codable {
     let generatedAt: String
     let quotes: [Quote]
 }
+
+/// Ein einzelner Reflexions-Eintrag: die kurze eigene Notiz, die der Nutzer
+/// optional zum gerade angezeigten Spruch schreiben kann (siehe
+/// ContentView.reflectionPrompt / ReflectionHistoryView). Spruchtext/-autor
+/// werden bewusst mitgespeichert (nicht nur die quoteID), damit der Verlauf
+/// auch dann noch den dazugehörigen Spruch zeigt, wenn der Spruch selbst
+/// später nicht mehr in der Rotation auftaucht (z.B. nach einem Remote-Fetch).
+struct Reflection: Codable, Identifiable, Hashable {
+    let id: String
+    let quoteID: String
+    let quoteText: String
+    let quoteAuthor: String?
+    var text: String
+    let dateKey: String
+    let createdAt: Date
+}

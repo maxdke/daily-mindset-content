@@ -16,6 +16,12 @@ struct PaywallView: View {
                     .font(.title)
                     .fontWeight(.bold)
 
+                if let headlineTrial = subscriptionManager.products.compactMap(trialDescription(for:)).first {
+                    Text(headlineTrial + " testen")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Color.accentColor)
+                }
+
                 VStack(alignment: .leading, spacing: 10) {
                     featureRow("Alle Kategorien freischalten (Business, Fitness, Disziplin, Dankbarkeit)")
                     featureRow("Täglich neue, abwechslungsreiche Sprüche")
@@ -32,7 +38,14 @@ struct PaywallView: View {
                                 Task { await subscriptionManager.purchase(product) }
                             } label: {
                                 HStack {
-                                    Text(product.displayName)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(product.displayName)
+                                        if let trial = trialDescription(for: product) {
+                                            Text(trial)
+                                                .font(.caption)
+                                                .foregroundStyle(Color.accentColor)
+                                        }
+                                    }
                                     Spacer()
                                     Text(product.displayPrice).fontWeight(.semibold)
                                 }
@@ -77,6 +90,18 @@ struct PaywallView: View {
         Label(text, systemImage: "checkmark.circle.fill")
             .foregroundStyle(.primary)
             .font(.subheadline)
+    }
+
+    /// Nil, solange für dieses Produkt kein kostenloses Einführungsangebot konfiguriert
+    /// ist ODER der Nutzer es schon einmal in Anspruch genommen hat (dann würde Apple es
+    /// beim eigentlichen Kauf ohnehin nicht mehr gewähren – die Paywall soll das also
+    /// gar nicht erst versprechen).
+    private func trialDescription(for product: Product) -> String? {
+        guard
+            let offer = product.subscription?.introductoryOffer,
+            subscriptionManager.introOfferEligibility[product.id] == true
+        else { return nil }
+        return offer.freeTrialDescription
     }
 }
 

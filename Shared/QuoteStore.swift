@@ -29,6 +29,7 @@ final class QuoteStore {
         static let currentStreak = "currentStreak"
         static let lastStreakDateKey = "lastStreakDateKey"
         static let customQuotes = "customQuotes"
+        static let reflections = "reflections"
     }
 
     // MARK: - Premium / Preferences
@@ -391,6 +392,57 @@ final class QuoteStore {
         if favoriteQuoteIDs.contains(id) {
             favoriteQuoteIDs.remove(id)
         }
+    }
+
+    // MARK: - Reflexionen
+
+    // Kurze eigene Notizen zu einem Spruch (kostenloses Feature, siehe
+    // AppViewModel.saveReflection / ContentView.reflectionPrompt). Genau wie bei
+    // customQuotes eigenes JSON in den geteilten UserDefaults, damit ein neuer
+    // Remote-Fetch der Sprüche sie nie überschreibt. Höchstens eine Reflexion pro
+    // quoteID (siehe addOrUpdateReflection) – erneutes Speichern zum selben Spruch
+    // überschreibt die vorherige Notiz, statt Duplikate anzulegen.
+    var reflections: [Reflection] {
+        get {
+            guard let data = defaults.data(forKey: Keys.reflections),
+                  let items = try? JSONDecoder().decode([Reflection].self, from: data) else {
+                return []
+            }
+            return items
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue) {
+                defaults.set(data, forKey: Keys.reflections)
+            }
+        }
+    }
+
+    @discardableResult
+    func addOrUpdateReflection(for quote: Quote, text: String) -> Reflection {
+        var items = reflections
+        if let index = items.firstIndex(where: { $0.quoteID == quote.id }) {
+            var updated = items[index]
+            updated.text = text
+            items[index] = updated
+            reflections = items
+            return updated
+        }
+        let reflection = Reflection(
+            id: "reflection-\(UUID().uuidString)",
+            quoteID: quote.id,
+            quoteText: quote.text,
+            quoteAuthor: quote.author,
+            text: text,
+            dateKey: quote.dateKey,
+            createdAt: Date()
+        )
+        items.insert(reflection, at: 0)
+        reflections = items
+        return reflection
+    }
+
+    func deleteReflection(id: String) {
+        reflections.removeAll { $0.id == id }
     }
 
     // MARK: - Quotes
