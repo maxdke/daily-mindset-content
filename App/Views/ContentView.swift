@@ -28,10 +28,24 @@ final class QuoteSpeechController: NSObject, ObservableObject, AVSpeechSynthesiz
             return
         }
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        utterance.voice = Self.bestGermanMaleVoice()
+        // Etwas tiefer und minimal langsamer als Standard -> wirkt "dunkler"/ruhiger,
+        // passend zum nüchternen Noir-Ton der App statt einer hellen Standardstimme.
+        utterance.pitchMultiplier = 0.82
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.95
         synthesizer.speak(utterance)
         isSpeaking = true
+    }
+
+    /// Sucht die beste verfügbare deutsche MÄNNLICHE Stimme (bevorzugt "Premium"/"Enhanced"
+    /// Qualität, z.B. die moderne Siri-Stimme, statt der hellen Standard-Kompakt-Stimme).
+    /// Ist keine männliche Stimme auf dem Gerät installiert, fällt das auf die
+    /// Standard-Systemstimme für Deutsch zurück (nie stumm, nur ggf. nicht ideal).
+    private static func bestGermanMaleVoice() -> AVSpeechSynthesisVoice? {
+        let germanMaleVoices = AVSpeechSynthesisVoice.speechVoices()
+            .filter { $0.language.hasPrefix("de") && $0.gender == .male }
+            .sorted { $0.quality.rawValue > $1.quality.rawValue }
+        return germanMaleVoices.first ?? AVSpeechSynthesisVoice(language: "de-DE")
     }
 
     /// Beim Wechsel zu einem anderen Spruch (swipen) soll nicht der alte Text
