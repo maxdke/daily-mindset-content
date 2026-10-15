@@ -5,6 +5,10 @@ import UIKit
 struct ContentView: View {
     @ObservedObject var viewModel: AppViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    /// Fürs kleine Logo neben "Daily Mindset" oben – zeigt bewusst das ECHTE,
+    /// aktuell gewählte App-Icon (siehe IconManager), nicht ein fest einprogrammiertes
+    /// Bild, damit Logo und Homescreen-Icon immer zusammenpassen.
+    @EnvironmentObject private var iconManager: IconManager
     /// Damit Spruch/Streak nicht veraltet stehen bleiben, wenn die App über Nacht nur
     /// in den Hintergrund (nicht komplett beendet) und morgens wieder in den Vordergrund
     /// geholt wird – .task/.onAppear laufen sonst nur einmal pro kaltem App-Start.
@@ -48,7 +52,27 @@ struct ContentView: View {
                 .padding()
             }
             .background(alignment: .center) { appBackground }
-            .navigationTitle("Daily Mindset")
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack(spacing: 8) {
+                        Image(iconManager.currentIcon.previewImageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 24, height: 24)
+                            .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 7, style: .continuous)
+                                    .strokeBorder(Color.primary, lineWidth: 1.2)
+                            )
+                            .shadow(color: Color.primary.opacity(0.4), radius: 8)
+                        Text("Daily Mindset")
+                            .font(.system(size: 17, weight: .bold))
+                            .tracking(0.5)
+                    }
+                }
+            }
             .sheet(isPresented: $showPaywall) { PaywallView() }
             .sheet(item: $shareItem) { item in
                 ActivityView(activityItems: [item.url])
