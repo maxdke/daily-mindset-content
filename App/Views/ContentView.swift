@@ -1,6 +1,55 @@
+import AVFoundation
 import PhotosUI
+import StoreKit
 import SwiftUI
 import UIKit
+
+/// Liest den aktuell angezeigten Spruch laut vor (native iOS-Sprachausgabe, Deutsch,
+/// kein Netzwerk/keine Kosten/keine Fremd-SDKs). Eigene kleine Klasse statt
+/// AVSpeechSynthesizer direkt in der View, weil das Delegate-Protokoll ein NSObject
+/// braucht und wir "isSpeaking" reaktiv fürs Button-Icon zurückmelden wollen - auch
+/// wenn die Sprachausgabe von selbst zu Ende ist, nicht nur bei explizitem Stopp.
+@MainActor
+final class QuoteSpeechController: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+    @Published private(set) var isSpeaking = false
+    private let synthesizer = AVSpeechSynthesizer()
+
+    override init() {
+        super.init()
+        synthesizer.delegate = self
+    }
+
+    /// Tippt man den Button erneut an während gesprochen wird, bricht das die
+    /// laufende Ausgabe ab (Toggle), statt sie zu überlagern.
+    func toggle(text: String) {
+        guard !synthesizer.isSpeaking else {
+            synthesizer.stopSpeaking(at: .immediate)
+            isSpeaking = false
+            return
+        }
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        synthesizer.speak(utterance)
+        isSpeaking = true
+    }
+
+    /// Beim Wechsel zu einem anderen Spruch (swipen) soll nicht der alte Text
+    /// weiterlaufen, während schon ein neuer Spruch zu sehen ist.
+    func stop() {
+        guard synthesizer.isSpeaking else { return }
+        synthesizer.stopSpeaking(at: .immediate)
+        isSpeaking = false
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in self.isSpeaking = false }
+    }
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in self.isSpeaking = false }
+    }
+}
 
 struct ContentView: View {
     @ObservedObject var viewModel: AppViewModel
@@ -28,6 +77,12 @@ struct ContentView: View {
     /// geteilte Bild quasi kostenlose Werbung für die App ist).
     @State private var shareItem: ShareableImage?
     @State private var reflectionText: String = ""
+    @StateObject private var speechController = QuoteSpeechController()
+    /// Dezente App-Store-Bewertungsanfrage genau einmal, sobald der Streak 7 Tage
+    /// erreicht hat (siehe maybeRequestReview()) - ein Moment, in dem Nutzer sich
+    /// gerade über ihren Fortschritt freuen, statt zufällig/nervig zu fragen.
+    @AppStorage("hasRequestedReviewAtStreak7") private var hasRequestedReviewAtStreak7 = false
+    @Environment(\.requestReview) private var requestReview
 
     var body: some View {
         NavigationStack {
@@ -91,11 +146,13 @@ struct ContentView: View {
             }
             .onChange(of: displayedQuoteID) { _, _ in
                 reflectionText = viewModel.reflection(forQuoteID: displayedQuote?.id ?? "")?.text ?? ""
+                speechController.stop()
             }
             .onAppear {
                 // Kostenloses Feature für alle Nutzer (siehe AppViewModel.recordDailyOpen) –
                 // zählt pro Kalendertag einmal, mehrfaches onAppear am selben Tag ist unschädlich.
                 viewModel.recordDailyOpen()
+                maybeRequestReview()
             }
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 guard newPhase == .active, oldPhase != .active else { return }
@@ -103,6 +160,7 @@ struct ContentView: View {
                 // und Streak neu bestimmen, statt den Stand vom letzten kalten Start zu zeigen.
                 viewModel.refreshTodaysQuote(isPremium: subscriptionManager.isPremium)
                 viewModel.recordDailyOpen()
+                maybeRequestReview()
             }
         }
         .preferredColorScheme(.dark)
@@ -114,6 +172,16 @@ struct ContentView: View {
     private var appBackground: some View {
         Color(red: 0x0A / 255, green: 0x0A / 255, blue: 0x0A / 255)
             .ignoresSafeArea()
+    }
+
+    /// Fragt genau einmal im App-Leben nach einer Bewertung, sobald der Streak 7 Tage
+    /// erreicht - ein positiver Moment, statt zufällig. Apple throttelt den System-Dialog
+    /// ohnehin selbst (max. 3x/Jahr); das Flag hier sorgt zusätzlich dafür, dass wir ihn
+    /// nicht bei jedem Start ab Tag 7 erneut anfordern.
+    private func maybeRequestReview() {
+        guard !hasRequestedReviewAtStreak7, viewModel.currentStreak >= 7 else { return }
+        hasRequestedReviewAtStreak7 = true
+        requestReview()
     }
 
     /// Kleines Streak-Badge über der Spruch-Karte: "X Tage in Folge" mit Flammen-Icon.
@@ -297,6 +365,18 @@ struct ContentView: View {
         .overlay(alignment: .topTrailing) {
             if let quote {
                 HStack(spacing: 8) {
+                    Button {
+                        speechController.toggle(text: quote.text)
+                    } label: {
+                        Image(systemName: speechController.isSpeaking ? "speaker.wave.2.fill" : "speaker.wave.2")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(speechController.isSpeaking ? Color.accentColor : .secondary)
+                            .frame(width: 30, height: 30)
+                            .contentShape(Rectangle())
+                            .background(Circle().fill(.thinMaterial))
+                    }
+                    .buttonStyle(.plain)
+
                     Button {
                         if let url = Self.renderShareImage(quote: quote, style: viewModel.selectedWidgetStyle) {
                             shareItem = ShareableImage(url: url)
