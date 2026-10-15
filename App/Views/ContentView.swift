@@ -3,6 +3,19 @@ import StoreKit
 import SwiftUI
 import UIKit
 
+/// Dezentes haptisches Feedback an den wichtigsten Tap-Momenten (Aktivieren,
+/// Favorisieren, Reflexion speichern) - kein neues Feature im eigentlichen Sinn,
+/// nur spürbare Politur, die die App hochwertiger wirken lässt.
+private enum Haptics {
+    static func light() {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    }
+
+    static func success() {
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+    }
+}
+
 struct ContentView: View {
     @ObservedObject var viewModel: AppViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
@@ -330,6 +343,7 @@ struct ContentView: View {
                     .buttonStyle(.plain)
 
                     Button {
+                        Haptics.light()
                         viewModel.toggleFavorite(quote)
                     } label: {
                         Image(systemName: viewModel.isFavorite(quote) ? "star.fill" : "star")
@@ -429,7 +443,9 @@ struct ContentView: View {
     }
 
     private func saveReflection(for quote: Quote) {
-        viewModel.saveReflection(text: reflectionText, for: quote)
+        if viewModel.saveReflection(text: reflectionText, for: quote) {
+            Haptics.success()
+        }
     }
 
     /// Deutlicher, beschrifteter Button statt eines kleinen Pin-Icons: zeigt klar
@@ -446,8 +462,10 @@ struct ContentView: View {
                 if !isPremium {
                     showPaywall = true
                 } else if isActive {
+                    Haptics.light()
                     viewModel.unpinQuote()
                 } else {
+                    Haptics.light()
                     viewModel.pinQuote(quote, isPremium: true)
                 }
             } label: {
