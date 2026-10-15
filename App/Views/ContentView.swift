@@ -1,69 +1,7 @@
-import AVFoundation
 import PhotosUI
 import StoreKit
 import SwiftUI
 import UIKit
-
-/// Liest den aktuell angezeigten Spruch laut vor (native iOS-Sprachausgabe, Deutsch,
-/// kein Netzwerk/keine Kosten/keine Fremd-SDKs). Eigene kleine Klasse statt
-/// AVSpeechSynthesizer direkt in der View, weil das Delegate-Protokoll ein NSObject
-/// braucht und wir "isSpeaking" reaktiv fürs Button-Icon zurückmelden wollen - auch
-/// wenn die Sprachausgabe von selbst zu Ende ist, nicht nur bei explizitem Stopp.
-@MainActor
-final class QuoteSpeechController: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
-    @Published private(set) var isSpeaking = false
-    private let synthesizer = AVSpeechSynthesizer()
-
-    override init() {
-        super.init()
-        synthesizer.delegate = self
-    }
-
-    /// Tippt man den Button erneut an während gesprochen wird, bricht das die
-    /// laufende Ausgabe ab (Toggle), statt sie zu überlagern.
-    func toggle(text: String) {
-        guard !synthesizer.isSpeaking else {
-            synthesizer.stopSpeaking(at: .immediate)
-            isSpeaking = false
-            return
-        }
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = Self.bestGermanMaleVoice()
-        // Etwas tiefer und minimal langsamer als Standard -> wirkt "dunkler"/ruhiger,
-        // passend zum nüchternen Noir-Ton der App statt einer hellen Standardstimme.
-        utterance.pitchMultiplier = 0.82
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.95
-        synthesizer.speak(utterance)
-        isSpeaking = true
-    }
-
-    /// Sucht die beste verfügbare deutsche MÄNNLICHE Stimme (bevorzugt "Premium"/"Enhanced"
-    /// Qualität, z.B. die moderne Siri-Stimme, statt der hellen Standard-Kompakt-Stimme).
-    /// Ist keine männliche Stimme auf dem Gerät installiert, fällt das auf die
-    /// Standard-Systemstimme für Deutsch zurück (nie stumm, nur ggf. nicht ideal).
-    private static func bestGermanMaleVoice() -> AVSpeechSynthesisVoice? {
-        let germanMaleVoices = AVSpeechSynthesisVoice.speechVoices()
-            .filter { $0.language.hasPrefix("de") && $0.gender == .male }
-            .sorted { $0.quality.rawValue > $1.quality.rawValue }
-        return germanMaleVoices.first ?? AVSpeechSynthesisVoice(language: "de-DE")
-    }
-
-    /// Beim Wechsel zu einem anderen Spruch (swipen) soll nicht der alte Text
-    /// weiterlaufen, während schon ein neuer Spruch zu sehen ist.
-    func stop() {
-        guard synthesizer.isSpeaking else { return }
-        synthesizer.stopSpeaking(at: .immediate)
-        isSpeaking = false
-    }
-
-    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        Task { @MainActor in self.isSpeaking = false }
-    }
-
-    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        Task { @MainActor in self.isSpeaking = false }
-    }
-}
 
 struct ContentView: View {
     @ObservedObject var viewModel: AppViewModel
@@ -91,7 +29,6 @@ struct ContentView: View {
     /// geteilte Bild quasi kostenlose Werbung für die App ist).
     @State private var shareItem: ShareableImage?
     @State private var reflectionText: String = ""
-    @StateObject private var speechController = QuoteSpeechController()
     /// Dezente App-Store-Bewertungsanfrage genau einmal, sobald der Streak 7 Tage
     /// erreicht hat (siehe maybeRequestReview()) - ein Moment, in dem Nutzer sich
     /// gerade über ihren Fortschritt freuen, statt zufällig/nervig zu fragen.
@@ -160,7 +97,6 @@ struct ContentView: View {
             }
             .onChange(of: displayedQuoteID) { _, _ in
                 reflectionText = viewModel.reflection(forQuoteID: displayedQuote?.id ?? "")?.text ?? ""
-                speechController.stop()
             }
             .onAppear {
                 // Kostenloses Feature für alle Nutzer (siehe AppViewModel.recordDailyOpen) –
@@ -379,18 +315,6 @@ struct ContentView: View {
         .overlay(alignment: .topTrailing) {
             if let quote {
                 HStack(spacing: 8) {
-                    Button {
-                        speechController.toggle(text: quote.text)
-                    } label: {
-                        Image(systemName: speechController.isSpeaking ? "speaker.wave.2.fill" : "speaker.wave.2")
-                            .font(.system(size: 15, weight: .semibold))
-                            .foregroundStyle(speechController.isSpeaking ? Color.accentColor : .secondary)
-                            .frame(width: 30, height: 30)
-                            .contentShape(Rectangle())
-                            .background(Circle().fill(.thinMaterial))
-                    }
-                    .buttonStyle(.plain)
-
                     Button {
                         if let url = Self.renderShareImage(quote: quote, style: viewModel.selectedWidgetStyle) {
                             shareItem = ShareableImage(url: url)
