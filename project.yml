@@ -21,6 +21,9 @@ targets:
     sources:
       - path: App
       - path: Shared
+      - path: MindsetAssets/CategoryBackgrounds
+        type: folder
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.maxdeike.dailymindset
