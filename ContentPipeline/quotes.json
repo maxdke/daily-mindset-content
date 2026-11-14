@@ -1,1055 +1,1055 @@
 {
-  "generatedAt": "2026-11-13",
+  "generatedAt": "2026-11-14",
   "quotes": [
     {
-      "id": "mindset-2026-11-13-0",
+      "id": "mindset-2026-11-14-0",
+      "text": "Disziplin ist der Zins, den du zahlst, bevor dein Leben sich verzinst.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-14"
+    },
+    {
+      "id": "mindset-2026-11-15-1",
+      "text": "Deine Ausreden klingen gut, deine Ergebnisse bleiben trotzdem aus.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-15"
+    },
+    {
+      "id": "mindset-2026-11-16-2",
+      "text": "Motivation ist ein Gast. Disziplin zieht bei dir ein.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-16"
+    },
+    {
+      "id": "mindset-2026-11-17-3",
+      "text": "Du musst dich nicht gut fühlen, um gut zu handeln.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-17"
+    },
+    {
+      "id": "mindset-2026-11-18-4",
+      "text": "Wer auf perfekte Bedingungen wartet, wartet sein Leben lang.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-18"
+    },
+    {
+      "id": "mindset-2026-11-19-5",
+      "text": "Schwache Tage sind kein Grund, schwache Entscheidungen zu treffen.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-19"
+    },
+    {
+      "id": "mindset-2026-11-20-6",
+      "text": "Dein Kopf gibt oft lange vor deinem Körper auf. Trainiere beide.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-20"
+    },
+    {
+      "id": "mindset-2026-11-21-7",
+      "text": "Komfort ist der leiseste Dieb deiner Zukunft.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-21"
+    },
+    {
+      "id": "mindset-2026-11-22-8",
+      "text": "Niemand rettet dich. Das ist die beste Nachricht des Tages.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-22"
+    },
+    {
+      "id": "mindset-2026-11-23-9",
+      "text": "Stärke entsteht nicht im Erfolg, sondern im Weitermachen danach.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-23"
+    },
+    {
+      "id": "mindset-2026-11-24-10",
+      "text": "Du bist nicht müde. Du bist unentschlossen.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-24"
+    },
+    {
+      "id": "mindset-2026-11-25-11",
+      "text": "Der innere Kritiker lügt am lautesten kurz vor deinem Durchbruch.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-25"
+    },
+    {
+      "id": "mindset-2026-11-26-12",
+      "text": "Mentale Stärke heißt: handeln, obwohl der Zweifel mitredet.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-26"
+    },
+    {
+      "id": "mindset-2026-11-27-13",
+      "text": "Du verhandelst nicht mit deiner Zukunft. Du arbeitest für sie.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-27"
+    },
+    {
+      "id": "mindset-2026-11-28-14",
+      "text": "Wer sich selbst Ausnahmen erlaubt, baut sich selbst eine Falle.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-28"
+    },
+    {
+      "id": "mindset-2026-11-29-15",
+      "text": "Klarheit entsteht nicht im Denken, sondern im Tun.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-29"
+    },
+    {
+      "id": "mindset-2026-11-30-16",
+      "text": "Dein Standard ist das, was du wiederholt tolerierst.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-11-30"
+    },
+    {
+      "id": "mindset-2026-12-01-17",
+      "text": "Angst verschwindet nicht durch Warten, sondern durch Handeln.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-01"
+    },
+    {
+      "id": "mindset-2026-12-02-18",
+      "text": "Du brauchst keine Inspiration. Du brauchst einen Plan.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-02"
+    },
+    {
+      "id": "mindset-2026-12-03-19",
+      "text": "Jeder Tag ohne Fortschritt ist eine stille Entscheidung gegen dich selbst.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-03"
+    },
+    {
+      "id": "mindset-2026-12-04-20",
+      "text": "Deine Gedanken sind Mieter. Du entscheidest, wer bleibt.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-04"
+    },
+    {
+      "id": "mindset-2026-12-05-21",
+      "text": "Stärke zeigt sich nicht laut, sondern in der stillen Wiederholung.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-05"
+    },
+    {
+      "id": "mindset-2026-12-06-22",
+      "text": "Wer ständig Sicherheit sucht, verpasst jedes Wachstum.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-06"
+    },
+    {
+      "id": "mindset-2026-12-07-23",
+      "text": "Dein Limit ist meistens nur eine schlecht geprüfte Annahme.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-07"
+    },
+    {
+      "id": "mindset-2026-12-08-24",
+      "text": "Disziplin fühlt sich nach nichts an – bis sie alles verändert hat.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-08"
+    },
+    {
+      "id": "mindset-2026-12-09-25",
+      "text": "Du musst nicht motiviert sein. Du musst nur konsequent sein.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-09"
+    },
+    {
+      "id": "mindset-2026-12-10-26",
+      "text": "Der Widerstand, den du spürst, ist oft das Zeichen, dass es wichtig ist.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-10"
+    },
+    {
+      "id": "mindset-2026-12-11-27",
+      "text": "Kontrolliere deinen Fokus, bevor andere ihn für dich übernehmen.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-11"
+    },
+    {
+      "id": "mindset-2026-12-12-28",
+      "text": "Unbequemlichkeit ist der Preis für ein Leben, das sich lohnt.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-12"
+    },
+    {
+      "id": "mindset-2026-12-13-29",
+      "text": "Du wirst nicht stärker durch Pläne, sondern durch Wiederholung unter Druck.",
+      "author": null,
+      "category": "mindset",
+      "dateKey": "2026-12-13"
+    },
+    {
+      "id": "business-2026-11-14-0",
+      "text": "Disziplin schlägt Motivation, jedes einzelne Mal.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-14"
+    },
+    {
+      "id": "business-2026-11-15-1",
+      "text": "Dein Kontostand ist nur der Nachweis deiner Entscheidungen.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-15"
+    },
+    {
+      "id": "business-2026-11-16-2",
+      "text": "Während andere Ausreden sammeln, sammelst du Ergebnisse.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-16"
+    },
+    {
+      "id": "business-2026-11-17-3",
+      "text": "Ein Tag ohne Fortschritt ist ein Tag für die Konkurrenz.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-17"
+    },
+    {
+      "id": "business-2026-11-18-4",
+      "text": "Deine Komfortzone zahlt keine Rechnungen.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-18"
+    },
+    {
+      "id": "business-2026-11-19-5",
+      "text": "Plane wie ein CEO, arbeite wie ein Praktikant.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-19"
+    },
+    {
+      "id": "business-2026-11-20-6",
+      "text": "Wer um 6 Uhr aufsteht, überholt die, die um 10 Uhr aufwachen.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-20"
+    },
+    {
+      "id": "business-2026-11-21-7",
+      "text": "Zeit ist das einzige Investment, das du nie zurückbekommst.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-21"
+    },
+    {
+      "id": "business-2026-11-22-8",
+      "text": "Erfolg ist kein Zufall, sondern ein Kalendereintrag.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-22"
+    },
+    {
+      "id": "business-2026-11-23-9",
+      "text": "Du baust entweder dein Business oder das von jemand anderem.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-23"
+    },
+    {
+      "id": "business-2026-11-24-10",
+      "text": "Konsequenz ist das Vermögen der Unscheinbaren.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-24"
+    },
+    {
+      "id": "business-2026-11-25-11",
+      "text": "Jede Stunde Ablenkung ist eine Stunde für deinen Konkurrenten.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-25"
+    },
+    {
+      "id": "business-2026-11-26-12",
+      "text": "Dein Umsatz wächst, sobald deine Ausreden schrumpfen.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-26"
+    },
+    {
+      "id": "business-2026-11-27-13",
+      "text": "Arbeite leise, lass die Zahlen sprechen.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-27"
+    },
+    {
+      "id": "business-2026-11-28-14",
+      "text": "Risiko ist der Preis für ein Leben außerhalb der Masse.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-28"
+    },
+    {
+      "id": "business-2026-11-29-15",
+      "text": "Wer auf den perfekten Moment wartet, verpasst jeden Moment.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-29"
+    },
+    {
+      "id": "business-2026-11-30-16",
+      "text": "Dein Netzwerk entscheidet, wie schnell dein Business wächst.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-11-30"
+    },
+    {
+      "id": "business-2026-12-01-17",
+      "text": "Fokus ist die neue Währung der Erfolgreichen.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-01"
+    },
+    {
+      "id": "business-2026-12-02-18",
+      "text": "Mach aus deinem Side-Hustle deinen Hauptjob.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-02"
+    },
+    {
+      "id": "business-2026-12-03-19",
+      "text": "Jede Ablenkung kostet dich einen Kunden mehr.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-03"
+    },
+    {
+      "id": "business-2026-12-04-20",
+      "text": "Du verhandelst nicht mit deiner Zukunft, du baust sie.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-04"
+    },
+    {
+      "id": "business-2026-12-05-21",
+      "text": "Produktivität beginnt, wo Ausreden enden.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-05"
+    },
+    {
+      "id": "business-2026-12-06-22",
+      "text": "Dein Pitch muss sitzen, bevor die Idee verkauft.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-06"
+    },
+    {
+      "id": "business-2026-12-07-23",
+      "text": "Nicht die Idee macht reich, sondern die Umsetzung.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-07"
+    },
+    {
+      "id": "business-2026-12-08-24",
+      "text": "Wer nicht skaliert, stagniert.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-08"
+    },
+    {
+      "id": "business-2026-12-09-25",
+      "text": "Dein erstes Investment ist Selbstdisziplin.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-09"
+    },
+    {
+      "id": "business-2026-12-10-26",
+      "text": "Erfolgreiche Menschen erledigen, was andere aufschieben.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-10"
+    },
+    {
+      "id": "business-2026-12-11-27",
+      "text": "Ein volles Postfach bremst dich, ein voller Umsatz treibt dich.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-11"
+    },
+    {
+      "id": "business-2026-12-12-28",
+      "text": "Gewinner optimieren Prozesse, Verlierer optimieren Ausreden.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-12"
+    },
+    {
+      "id": "business-2026-12-13-29",
+      "text": "Baue Systeme, nicht nur Stunden.",
+      "author": null,
+      "category": "business",
+      "dateKey": "2026-12-13"
+    },
+    {
+      "id": "discipline-2026-11-14-0",
       "text": "Disziplin ist der Zins, den du auf dein zukünftiges Ich zahlst.",
       "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-13"
-    },
-    {
-      "id": "mindset-2026-11-14-1",
-      "text": "Motivation ist ein Gast. Disziplin wohnt bei dir.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-14"
-    },
-    {
-      "id": "mindset-2026-11-15-2",
-      "text": "Dein Kopf ist kein Feind. Er testet nur, wie ernst du es meinst.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-15"
-    },
-    {
-      "id": "mindset-2026-11-16-3",
-      "text": "Comfort Zone ist kein Zuhause, nur eine Zwischenstation.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-16"
-    },
-    {
-      "id": "mindset-2026-11-17-4",
-      "text": "Du musst nicht bereit sein. Du musst nur anfangen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-17"
-    },
-    {
-      "id": "mindset-2026-11-18-5",
-      "text": "Ausreden klingen immer besser, wenn man müde ist.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-18"
-    },
-    {
-      "id": "mindset-2026-11-19-6",
-      "text": "Mentale Stärke zeigt sich nicht im Erfolg, sondern im Montagmorgen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-19"
-    },
-    {
-      "id": "mindset-2026-11-20-7",
-      "text": "Dein Standard ist das, was du tust, wenn keiner zuschaut.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-20"
-    },
-    {
-      "id": "mindset-2026-11-21-8",
-      "text": "Schwach ist nicht, wer fällt. Schwach ist, wer liegen bleibt.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-21"
-    },
-    {
-      "id": "mindset-2026-11-22-9",
-      "text": "Du bist nicht müde. Du bist unfokussiert.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-22"
-    },
-    {
-      "id": "mindset-2026-11-23-10",
-      "text": "Zweifel sind laut. Lass trotzdem deine Taten sprechen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-23"
-    },
-    {
-      "id": "mindset-2026-11-24-11",
-      "text": "Jeder Tag, an dem du durchziehst, ist Beweis gegen deine Zweifel.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-24"
-    },
-    {
-      "id": "mindset-2026-11-25-12",
-      "text": "Dein Gehirn sucht den leichten Weg. Du entscheidest den richtigen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-25"
-    },
-    {
-      "id": "mindset-2026-11-26-13",
-      "text": "Unbequem heute. Unaufhaltsam morgen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-26"
-    },
-    {
-      "id": "mindset-2026-11-27-14",
-      "text": "Stärke ist kein Gefühl. Es ist eine Entscheidung, die du wiederholst.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-27"
-    },
-    {
-      "id": "mindset-2026-11-28-15",
-      "text": "Du verlierst nicht gegen andere. Du verlierst gegen deine Snooze-Taste.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-28"
-    },
-    {
-      "id": "mindset-2026-11-29-16",
-      "text": "Mentale Stärke heißt: weitermachen, wenn die Motivation schon zu Hause ist.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-29"
-    },
-    {
-      "id": "mindset-2026-11-30-17",
-      "text": "Dein zukünftiges Ich wartet nicht auf Ausreden.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-11-30"
-    },
-    {
-      "id": "mindset-2026-12-01-18",
-      "text": "Schmerz ist temporär. Aufgeben ist permanent peinlich.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-01"
-    },
-    {
-      "id": "mindset-2026-12-02-19",
-      "text": "Wer sich selbst überwindet, braucht keine Zuschauer.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-02"
-    },
-    {
-      "id": "mindset-2026-12-03-20",
-      "text": "Du bist nicht blockiert. Du bist nur bequem geworden.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-03"
-    },
-    {
-      "id": "mindset-2026-12-04-21",
-      "text": "Resilienz ist der Muskel, den niemand sieht, bis du ihn brauchst.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-04"
-    },
-    {
-      "id": "mindset-2026-12-05-22",
-      "text": "Dein innerer Kritiker lügt am lautesten, kurz bevor du durchbrichst.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-05"
-    },
-    {
-      "id": "mindset-2026-12-06-23",
-      "text": "Erfolg fühlt sich nie nach Motivation an. Er fühlt sich nach Routine an.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-06"
-    },
-    {
-      "id": "mindset-2026-12-07-24",
-      "text": "Du musst nicht alles fühlen. Du musst nur liefern.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-07"
-    },
-    {
-      "id": "mindset-2026-12-08-25",
-      "text": "Stärke wächst nicht im Komfort, sondern im Widerstand dagegen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-08"
-    },
-    {
-      "id": "mindset-2026-12-09-26",
-      "text": "Dein Mindset ist der einzige Rohstoff, der nie zur Neige geht, wenn du ihn pflegst.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-09"
-    },
-    {
-      "id": "mindset-2026-12-10-27",
-      "text": "Wer ständig auf den perfekten Moment wartet, verpasst den jetzigen.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-10"
-    },
-    {
-      "id": "mindset-2026-12-11-28",
-      "text": "Keine Ausnahmen. Keine Ausreden. Nur Konsequenz.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-11"
-    },
-    {
-      "id": "mindset-2026-12-12-29",
-      "text": "Du bist härter im Nehmen, als dein innerer Monolog behauptet.",
-      "author": null,
-      "category": "mindset",
-      "dateKey": "2026-12-12"
-    },
-    {
-      "id": "business-2026-11-13-0",
-      "text": "Deine Ausreden haben einen höheren IQ als dein Businessplan.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-13"
-    },
-    {
-      "id": "business-2026-11-14-1",
-      "text": "Motivation ist für Anfänger. Systeme bauen die, die ankommen.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-14"
-    },
-    {
-      "id": "business-2026-11-15-2",
-      "text": "Während du wartest, baut jemand anderes dein Imperium.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-15"
-    },
-    {
-      "id": "business-2026-11-16-3",
-      "text": "Komfort ist der teuerste Kredit, den du je aufgenommen hast.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-16"
-    },
-    {
-      "id": "business-2026-11-17-4",
-      "text": "Dein Konkurrent schläft nicht länger, er fängt nur früher an zu denken.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-17"
-    },
-    {
-      "id": "business-2026-11-18-5",
-      "text": "Disziplin ist die Rechnung, die du bezahlst, bevor Erfolg kommt.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-18"
-    },
-    {
-      "id": "business-2026-11-19-6",
-      "text": "Nicht jede Idee verdient Taten. Aber jede Tat verdient Fokus.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-19"
-    },
-    {
-      "id": "business-2026-11-20-7",
-      "text": "Du willst Freiheit, lebst aber wie jemand, der Sicherheit will.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-20"
-    },
-    {
-      "id": "business-2026-11-21-8",
-      "text": "Wer auf den perfekten Moment wartet, verpasst den einzigen.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-21"
-    },
-    {
-      "id": "business-2026-11-22-9",
-      "text": "Zeit ist kein Geld. Zeit ist das, womit du Geld überhaupt erst machst.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-22"
-    },
-    {
-      "id": "business-2026-11-23-10",
-      "text": "Dein Umsatz spiegelt dein Unbehagen mit Ablehnung wider.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-23"
-    },
-    {
-      "id": "business-2026-11-24-11",
-      "text": "Erfolg ist langweilig, bevor er spektakulär wird.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-24"
-    },
-    {
-      "id": "business-2026-11-25-12",
-      "text": "Du brauchst keinen Plan B. Du brauchst Commitment zu Plan A.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-25"
-    },
-    {
-      "id": "business-2026-11-26-13",
-      "text": "Niemand bewundert den Prozess. Alle bewundern das Ergebnis danach.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-26"
-    },
-    {
-      "id": "business-2026-11-27-14",
-      "text": "Deine beste Idee ist wertlos, solange sie nur in deinem Kopf lebt.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-27"
-    },
-    {
-      "id": "business-2026-11-28-15",
-      "text": "Müdigkeit ist temporär. Aufgeben ist permanent. Rechne nach.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-28"
-    },
-    {
-      "id": "business-2026-11-29-16",
-      "text": "Du konkurrierst nicht mit anderen. Du konkurrierst mit deiner Bequemlichkeit.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-29"
-    },
-    {
-      "id": "business-2026-11-30-17",
-      "text": "Wachstum fühlt sich an wie Unsicherheit mit besserem Marketing.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-11-30"
-    },
-    {
-      "id": "business-2026-12-01-18",
-      "text": "Der Markt zahlt nicht für Anstrengung. Er zahlt für Lösungen.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-01"
-    },
-    {
-      "id": "business-2026-12-02-19",
-      "text": "Mach heute, wofür andere erst morgen Mut finden.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-02"
-    },
-    {
-      "id": "business-2026-12-03-20",
-      "text": "Dein Netzwerk ist dein Vorsprung von morgen, heute ignoriert.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-03"
-    },
-    {
-      "id": "business-2026-12-04-21",
-      "text": "Risiko ist nur gefährlich, wenn du unvorbereitet bist.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-04"
-    },
-    {
-      "id": "business-2026-12-05-22",
-      "text": "Du willst Resultate wie die Elite, arbeitest aber wie der Durchschnitt.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-05"
-    },
-    {
-      "id": "business-2026-12-06-23",
-      "text": "Jeder Tag ohne Umsetzung ist ein verschenkter Vorsprung.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-06"
-    },
-    {
-      "id": "business-2026-12-07-24",
-      "text": "Konsequenz schlägt Talent, wenn Talent sich nicht anstrengt.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-07"
-    },
-    {
-      "id": "business-2026-12-08-25",
-      "text": "Baue dein Business so, als würde dich niemand retten.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-08"
-    },
-    {
-      "id": "business-2026-12-09-26",
-      "text": "Die besten Deals entstehen aus unbequemen Gesprächen.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-09"
-    },
-    {
-      "id": "business-2026-12-10-27",
-      "text": "Du hast keine Zeit? Du hast falsche Prioritäten.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-10"
-    },
-    {
-      "id": "business-2026-12-11-28",
-      "text": "Wachstum verlangt, dass du der Person von gestern widersprichst.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-11"
-    },
-    {
-      "id": "business-2026-12-12-29",
-      "text": "Dein Zukunfts-Ich bezahlt heute den Preis deiner Entscheidungen.",
-      "author": null,
-      "category": "business",
-      "dateKey": "2026-12-12"
-    },
-    {
-      "id": "discipline-2026-11-13-0",
-      "text": "Disziplin ist der Unterschied zwischen dem, der du bist, und dem, der du sein könntest.",
-      "author": null,
-      "category": "discipline",
-      "dateKey": "2026-11-13"
-    },
-    {
-      "id": "discipline-2026-11-14-1",
-      "text": "Motivation startet dich. Disziplin hält dich am Laufen, wenn niemand mehr zuschaut.",
-      "author": null,
       "category": "discipline",
       "dateKey": "2026-11-14"
     },
     {
-      "id": "discipline-2026-11-15-2",
-      "text": "Du brauchst keine Lust. Du brauchst ein System, das ohne Lust funktioniert.",
+      "id": "discipline-2026-11-15-1",
+      "text": "Motivation checkt aus, Disziplin bleibt und macht den Job fertig.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-15"
     },
     {
-      "id": "discipline-2026-11-16-3",
-      "text": "Jeder Tag, an dem du durchziehst, ist ein Beweis gegen deine Ausreden.",
+      "id": "discipline-2026-11-16-2",
+      "text": "Du musst nicht wollen. Du musst nur machen.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-16"
     },
     {
-      "id": "discipline-2026-11-17-4",
-      "text": "Comfort ist der Ort, an dem Ziele sterben.",
+      "id": "discipline-2026-11-17-3",
+      "text": "Jeder Tag ohne Ausrede ist ein Tag mehr Vorsprung.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-17"
     },
     {
-      "id": "discipline-2026-11-18-5",
-      "text": "Disziplin fühlt sich nicht gut an. Sie fühlt sich nach einem Jahr gut an.",
+      "id": "discipline-2026-11-18-4",
+      "text": "Durchhalten ist langweilig. Aufgeben ist teurer.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-18"
     },
     {
-      "id": "discipline-2026-11-19-6",
-      "text": "Wer auf Gefühle wartet, wartet ein Leben lang.",
+      "id": "discipline-2026-11-19-5",
+      "text": "Komfort ist der Ort, an dem Träume verhungern.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-19"
     },
     {
-      "id": "discipline-2026-11-20-7",
-      "text": "Dein zukünftiges Ich zahlt den Preis für die Entscheidungen von heute.",
+      "id": "discipline-2026-11-20-6",
+      "text": "Wer auf Motivation wartet, verliert gegen den, der einfach anfängt.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-20"
     },
     {
-      "id": "discipline-2026-11-21-8",
-      "text": "Konsequenz schlägt Intensität. Immer.",
+      "id": "discipline-2026-11-21-7",
+      "text": "Disziplin fühlt sich nie gut an - bis sie dein Leben verändert hat.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-21"
     },
     {
-      "id": "discipline-2026-11-22-9",
-      "text": "Du musst nicht motiviert sein. Du musst nur anfangen.",
+      "id": "discipline-2026-11-22-8",
+      "text": "Die Ausrede von heute ist die Reue von morgen.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-22"
     },
     {
-      "id": "discipline-2026-11-23-10",
-      "text": "Kleine Pflichten, die du ignorierst, werden zu großen Problemen, die du nicht ignorieren kannst.",
+      "id": "discipline-2026-11-23-9",
+      "text": "Du wirst nicht aufwachen und Lust haben. Du stehst trotzdem auf.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-23"
     },
     {
-      "id": "discipline-2026-11-24-11",
-      "text": "Disziplin ist leise. Sie postet nicht, sie liefert.",
+      "id": "discipline-2026-11-24-10",
+      "text": "Konsequenz schlägt Talent, jeden einzelnen Tag.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-24"
     },
     {
-      "id": "discipline-2026-11-25-12",
-      "text": "Der Unterschied zwischen Träumen und Zielen heißt Wiederholung.",
+      "id": "discipline-2026-11-25-11",
+      "text": "Null Bock ist kein Grund, null zu tun.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-25"
     },
     {
-      "id": "discipline-2026-11-26-13",
-      "text": "Du überspringst heute einen Tag - dein Ziel überspringt morgen dich.",
+      "id": "discipline-2026-11-26-12",
+      "text": "Gewohnheiten bauen das Leben, das Willenskraft allein nicht halten kann.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-26"
     },
     {
-      "id": "discipline-2026-11-27-14",
-      "text": "Niemand sieht die 5-Uhr-Alarme. Alle sehen nur das Ergebnis.",
+      "id": "discipline-2026-11-27-13",
+      "text": "Wer stoppt, wenn's unangenehm wird, bleibt für immer auf dem gleichen Level.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-27"
     },
     {
-      "id": "discipline-2026-11-28-15",
-      "text": "Disziplin ist das Vertrauen, das du dir selbst jeden Tag neu verdienst.",
+      "id": "discipline-2026-11-28-14",
+      "text": "Disziplin ist Freiheit in Verkleidung.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-28"
     },
     {
-      "id": "discipline-2026-11-29-16",
-      "text": "Du wirst nicht aus Motivation reich, stark oder frei. Du wirst es aus Wiederholung.",
+      "id": "discipline-2026-11-29-15",
+      "text": "Die harte Phase ist der Teil, der dich von allen anderen unterscheidet.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-29"
     },
     {
-      "id": "discipline-2026-11-30-17",
-      "text": "Stoppe nicht, wenn es wehtut. Stoppe, wenn du fertig bist.",
+      "id": "discipline-2026-11-30-16",
+      "text": "Du brauchst keine Inspiration. Du brauchst einen Plan und die Härte, ihn durchzuziehen.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-11-30"
     },
     {
-      "id": "discipline-2026-12-01-18",
-      "text": "Jede Ausrede, die du akzeptierst, finanziert eine Version von dir, die du nicht sein willst.",
+      "id": "discipline-2026-12-01-17",
+      "text": "Jeder Tag, den du durchziehst, ist ein Beweis gegen deine alten Zweifel.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-01"
     },
     {
-      "id": "discipline-2026-12-02-19",
-      "text": "Disziplin ist der Zins, den du auf dein zukünftiges Leben zahlst.",
+      "id": "discipline-2026-12-02-18",
+      "text": "Aufgeben ist leise. Durchhalten ist lauter als jede Ausrede.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-02"
     },
     {
-      "id": "discipline-2026-12-03-20",
-      "text": "Du brauchst keinen guten Tag. Du brauchst eine gute Routine.",
+      "id": "discipline-2026-12-03-19",
+      "text": "Dein Standard von heute ist dein Limit von morgen - leg die Latte höher.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-03"
     },
     {
-      "id": "discipline-2026-12-04-21",
-      "text": "Was du heute wiederholst, wirst du in einem Jahr sein.",
+      "id": "discipline-2026-12-04-20",
+      "text": "Disziplin heißt, dein Ziel mehr zu lieben als deine Laune.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-04"
     },
     {
-      "id": "discipline-2026-12-05-22",
-      "text": "Durchhalten ist keine Emotion. Es ist eine Entscheidung, die du täglich triffst.",
+      "id": "discipline-2026-12-05-21",
+      "text": "Die Leute sehen das Ergebnis. Niemand sieht die 100 Tage davor, an denen du trotzdem weitergemacht hast.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-05"
     },
     {
-      "id": "discipline-2026-12-06-23",
-      "text": "Dein Standard ist das, was du tust, wenn keiner applaudiert.",
+      "id": "discipline-2026-12-06-22",
+      "text": "Wenn's leicht wäre, würde es jeder machen. Genau deshalb machst du's.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-06"
     },
     {
-      "id": "discipline-2026-12-07-24",
-      "text": "Disziplin baut das Leben, das Motivation nur verspricht.",
+      "id": "discipline-2026-12-07-23",
+      "text": "Disziplin ist die Brücke zwischen dem, was du willst, und dem, was du bekommst.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-07"
     },
     {
-      "id": "discipline-2026-12-08-25",
-      "text": "Du verlierst nicht an dem Tag, an dem du aufgibst. Du verlierst an jedem Tag davor.",
+      "id": "discipline-2026-12-08-24",
+      "text": "Du verlierst nicht, wenn du scheiterst. Du verlierst, wenn du aufhörst, es erneut zu versuchen.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-08"
     },
     {
-      "id": "discipline-2026-12-09-26",
-      "text": "Konstanz ist langweilig. Ergebnisse sind es nicht.",
+      "id": "discipline-2026-12-09-25",
+      "text": "Härte ist kein Zustand. Härte ist eine Entscheidung, die du jeden Morgen triffst.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-09"
     },
     {
-      "id": "discipline-2026-12-10-27",
-      "text": "Jede Wiederholung ist eine Stimme für die Person, die du werden willst.",
+      "id": "discipline-2026-12-10-26",
+      "text": "Konstanz ist das stille Superpower, das niemand sieht, bis es dich unaufhaltbar macht.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-10"
     },
     {
-      "id": "discipline-2026-12-11-28",
-      "text": "Zwischen Reiz und Reaktion liegt Disziplin. Dort entscheidet sich alles.",
+      "id": "discipline-2026-12-11-27",
+      "text": "Dein Durchhaltevermögen heute entscheidet, wie frei du morgen lebst.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-11"
     },
     {
-      "id": "discipline-2026-12-12-29",
-      "text": "Du musst nicht schneller sein. Du musst nur länger dranbleiben als die anderen aufgeben.",
+      "id": "discipline-2026-12-12-28",
+      "text": "Deine Zukunft fragt nicht, wie du dich fühltest. Sie fragt, ob du dran geblieben bist.",
       "author": null,
       "category": "discipline",
       "dateKey": "2026-12-12"
     },
     {
-      "id": "fitness-2026-11-13-0",
-      "text": "Dein Körper ist dein erstes Investment – alles andere baut darauf auf.",
+      "id": "discipline-2026-12-13-29",
+      "text": "Der Unterschied zwischen Träumen und Zielen ist der Tag, an dem du trotzdem aufstehst.",
       "author": null,
-      "category": "fitness",
-      "dateKey": "2026-11-13"
+      "category": "discipline",
+      "dateKey": "2026-12-13"
     },
     {
-      "id": "fitness-2026-11-14-1",
-      "text": "Energie ist die einzige Währung, die du nicht nachdrucken kannst.",
+      "id": "fitness-2026-11-14-0",
+      "text": "Dein Körper ist dein größter Zinseszins – investier täglich.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-14"
     },
     {
-      "id": "fitness-2026-11-15-2",
-      "text": "Wer seinen Körper vernachlässigt, finanziert später teure Reparaturen.",
+      "id": "fitness-2026-11-15-1",
+      "text": "Energie ist die einzige Währung, die du dir nicht leihen kannst.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-15"
     },
     {
-      "id": "fitness-2026-11-16-3",
-      "text": "Training ist der Zinseszins für deine Energie von morgen.",
+      "id": "fitness-2026-11-16-2",
+      "text": "Wer seinen Körper vernachlässigt, verliert sein wichtigstes Werkzeug.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-16"
     },
     {
-      "id": "fitness-2026-11-17-4",
-      "text": "Müdigkeit ist oft nur schlechtes Energiemanagement, keine Tatsache.",
+      "id": "fitness-2026-11-17-3",
+      "text": "Müdigkeit ist keine Tatsache, sondern eine Entscheidung.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-17"
     },
     {
-      "id": "fitness-2026-11-18-5",
-      "text": "Dein Workout heute ist der Vorschuss auf deinen Fokus heute Nachmittag.",
+      "id": "fitness-2026-11-18-4",
+      "text": "Dein Workout heute ist dein Vorsprung morgen.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-18"
     },
     {
-      "id": "fitness-2026-11-19-6",
-      "text": "Kraft kommt nicht von Motivation, sondern von Wiederholung.",
+      "id": "fitness-2026-11-19-5",
+      "text": "Disziplin im Training formt Disziplin im Kopf.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-19"
     },
     {
-      "id": "fitness-2026-11-20-7",
-      "text": "Jede verpasste Einheit ist ein stiller Kredit gegen dein zukünftiges Ich.",
+      "id": "fitness-2026-11-20-6",
+      "text": "Kraft entsteht nicht durch Motivation, sondern durch Wiederholung.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-20"
     },
     {
-      "id": "fitness-2026-11-21-8",
-      "text": "Bewegung ist das günstigste Antidepressivum, das du nie eingelöst hast.",
+      "id": "fitness-2026-11-21-7",
+      "text": "Ein starker Körper trägt einen klaren Kopf.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-21"
     },
     {
-      "id": "fitness-2026-11-22-9",
-      "text": "Dein Puls entscheidet, wie klar dein Kopf heute arbeitet.",
+      "id": "fitness-2026-11-22-8",
+      "text": "Du trainierst nicht für den Sommer, sondern für jeden Tag danach.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-22"
     },
     {
-      "id": "fitness-2026-11-23-10",
-      "text": "Ausdauer im Training ist Ausdauer im Leben – nur früher spürbar.",
+      "id": "fitness-2026-11-23-9",
+      "text": "Bewegung ist der Preis, den dein Körper für Energie verlangt.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-23"
     },
     {
-      "id": "fitness-2026-11-24-11",
-      "text": "Du optimierst dein Portfolio, aber ignorierst deine Muskeln.",
+      "id": "fitness-2026-11-24-10",
+      "text": "Wer schwitzt, verdient sich Klarheit.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-24"
     },
     {
-      "id": "fitness-2026-11-25-12",
-      "text": "Ein starker Körper verhandelt bessere Konditionen mit dem Alltag.",
+      "id": "fitness-2026-11-25-11",
+      "text": "Dein Limit von gestern ist dein Aufwärmen von heute.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-25"
     },
     {
-      "id": "fitness-2026-11-26-13",
-      "text": "Schlaf ist die Dividende, die du dir durch Training verdienst.",
+      "id": "fitness-2026-11-26-12",
+      "text": "Energie zu managen schlägt Zeit zu managen.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-26"
     },
     {
-      "id": "fitness-2026-11-27-14",
-      "text": "Wer nie schwitzt, zahlt später mit Zinsen in Erschöpfung.",
+      "id": "fitness-2026-11-27-13",
+      "text": "Kein Ziel übersteht einen erschöpften Körper.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-27"
     },
     {
-      "id": "fitness-2026-11-28-15",
-      "text": "Disziplin im Training ist der Beweis, dass du dir selbst vertraust.",
+      "id": "fitness-2026-11-28-14",
+      "text": "Trainiere, als hinge dein Leben davon ab – es tut es.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-28"
     },
     {
-      "id": "fitness-2026-11-29-16",
-      "text": "Dein Körper merkt sich jede Ausrede – und rächt sich leise.",
+      "id": "fitness-2026-11-29-15",
+      "text": "Ausdauer im Training wird Ausdauer im Leben.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-29"
     },
     {
-      "id": "fitness-2026-11-30-17",
-      "text": "Energie tanken heißt nicht ausruhen, sondern bewegen.",
+      "id": "fitness-2026-11-30-16",
+      "text": "Du bist nicht müde, du bist unterfordert von deinem Potenzial.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-11-30"
     },
     {
-      "id": "fitness-2026-12-01-18",
-      "text": "Stärke baust du nicht an guten Tagen, sondern an ungemütlichen.",
+      "id": "fitness-2026-12-01-17",
+      "text": "Jeder Trainingsschritt ist eine Einzahlung auf dein Zukunfts-Ich.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-01"
     },
     {
-      "id": "fitness-2026-12-02-19",
-      "text": "Dein Body ist das einzige Asset, das du nie verkaufen kannst.",
+      "id": "fitness-2026-12-02-18",
+      "text": "Dein Körper merkt sich jede Ausrede.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-02"
     },
     {
-      "id": "fitness-2026-12-03-20",
-      "text": "Wer körperlich stillsteht, bremst auch im Kopf.",
+      "id": "fitness-2026-12-03-19",
+      "text": "Fitness ist der Zinseszins deiner Gesundheit.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-03"
     },
     {
-      "id": "fitness-2026-12-04-21",
-      "text": "Jede Wiederholung ist ein Einzahlungsbeleg für dein Energiekonto.",
+      "id": "fitness-2026-12-04-20",
+      "text": "Bewegung schlägt jeden Energy-Drink.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-04"
     },
     {
-      "id": "fitness-2026-12-05-22",
-      "text": "Fitness ist kein Ziel, sondern die Infrastruktur für alle anderen Ziele.",
+      "id": "fitness-2026-12-05-21",
+      "text": "Du kannst nicht optimieren, was du nicht trainierst.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-05"
     },
     {
-      "id": "fitness-2026-12-06-23",
-      "text": "Dein Limit von heute ist nur dein Aufwärmen von morgen.",
+      "id": "fitness-2026-12-06-22",
+      "text": "Dein Puls heute entscheidet über deine Power morgen.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-06"
     },
     {
-      "id": "fitness-2026-12-07-24",
-      "text": "Bewegung schlägt Kaffee – nur ohne den Absturz danach.",
+      "id": "fitness-2026-12-07-23",
+      "text": "Stärke entsteht nicht im Kopf, sondern in der Wiederholung.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-07"
     },
     {
-      "id": "fitness-2026-12-08-25",
-      "text": "Ein trainierter Körper denkt schneller, nicht nur stärker.",
+      "id": "fitness-2026-12-08-24",
+      "text": "Ein trainierter Körper ist dein stiller Vorteil.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-08"
     },
     {
-      "id": "fitness-2026-12-09-26",
-      "text": "Du kannst nicht High-Performance liefern mit einem Low-Energy-Körper.",
+      "id": "fitness-2026-12-09-25",
+      "text": "Schlaf ist dein Reset, Training ist dein Upgrade.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-09"
     },
     {
-      "id": "fitness-2026-12-10-27",
-      "text": "Kraft ist leise – sie zeigt sich erst, wenn du gebraucht wirst.",
+      "id": "fitness-2026-12-10-26",
+      "text": "Wer sich bewegt, denkt schneller.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-10"
     },
     {
-      "id": "fitness-2026-12-11-28",
-      "text": "Dein Körper ist der Server, der alle deine Projekte am Laufen hält.",
+      "id": "fitness-2026-12-11-27",
+      "text": "Dein Körper ist das einzige Asset, das du nie verkaufen kannst.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-11"
     },
     {
-      "id": "fitness-2026-12-12-29",
-      "text": "Wer sich körperlich fordert, verhandelt mental auf einem anderen Level.",
+      "id": "fitness-2026-12-12-28",
+      "text": "Kraft ist leise – sie zeigt sich erst im Ergebnis.",
       "author": null,
       "category": "fitness",
       "dateKey": "2026-12-12"
     },
     {
-      "id": "gratitude-2026-11-13-0",
-      "text": "Zufriedenheit ist kein Ziel, sie ist der Fuel für den nächsten Schritt.",
+      "id": "fitness-2026-12-13-29",
+      "text": "Dein nächstes Set entscheidet, wer du in zwei Jahren bist.",
       "author": null,
-      "category": "gratitude",
-      "dateKey": "2026-11-13"
+      "category": "fitness",
+      "dateKey": "2026-12-13"
     },
     {
-      "id": "gratitude-2026-11-14-1",
-      "text": "Dankbarkeit ist die einzige Investition, die sofort Rendite bringt.",
+      "id": "gratitude-2026-11-14-0",
+      "text": "Zufriedenheit ist kein Ziel, sie ist die Entscheidung, heute schon zu gewinnen.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-14"
     },
     {
-      "id": "gratitude-2026-11-15-2",
-      "text": "Du brauchst nicht mehr, um glücklich zu sein – du brauchst nur einen klareren Blick.",
+      "id": "gratitude-2026-11-15-1",
+      "text": "Dankbarkeit ist dein unfairer Vorteil – sie macht aus Druck Energie.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-15"
     },
     {
-      "id": "gratitude-2026-11-16-3",
-      "text": "Wer dankbar ist, verliert nie – er sammelt nur Erfahrung.",
+      "id": "gratitude-2026-11-16-2",
+      "text": "Wer das Jetzt nicht wertschätzt, verpasst die Hälfte seines Erfolgs.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-16"
     },
     {
-      "id": "gratitude-2026-11-17-4",
-      "text": "Zufrieden sein heißt nicht aufhören, sondern im Jetzt angekommen weiterbauen.",
+      "id": "gratitude-2026-11-17-3",
+      "text": "Zufriedenheit ist der stille Zinseszins der Dankbarkeit.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-17"
     },
     {
-      "id": "gratitude-2026-11-18-5",
-      "text": "Dankbarkeit kostet nichts und verändert alles.",
+      "id": "gratitude-2026-11-18-4",
+      "text": "Du musst nicht alles haben, um reich an diesem Tag zu sein.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-18"
     },
     {
-      "id": "gratitude-2026-11-19-6",
-      "text": "Du feierst nie deine Fortschritte – deshalb fühlst du dich nie weit genug.",
+      "id": "gratitude-2026-11-19-5",
+      "text": "Dankbarkeit kostet nichts und bringt mehr als jede Abkürzung.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-19"
     },
     {
-      "id": "gratitude-2026-11-20-7",
-      "text": "Zufriedenheit ist die Ruhe, aus der echte Energie entsteht.",
+      "id": "gratitude-2026-11-20-6",
+      "text": "Wer dankbar startet, performt den ganzen Tag auf einem anderen Level.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-20"
     },
     {
-      "id": "gratitude-2026-11-21-8",
-      "text": "Wer ständig vergleicht, übersieht, was er schon erreicht hat.",
+      "id": "gratitude-2026-11-21-7",
+      "text": "Zufriedenheit ist nicht das Ende des Ehrgeizes, sondern sein ruhiger Motor.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-21"
     },
     {
-      "id": "gratitude-2026-11-22-9",
-      "text": "Dankbarkeit ist der Soundtrack zu einem Leben, das sich nicht nach mehr anfühlen muss.",
+      "id": "gratitude-2026-11-22-8",
+      "text": "Du vergleichst dein Kapitel 3 mit fremdem Kapitel 20 – hör auf damit.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-22"
     },
     {
-      "id": "gratitude-2026-11-23-10",
-      "text": "Du musst nicht alles haben, um alles zu spüren.",
+      "id": "gratitude-2026-11-23-9",
+      "text": "Dankbarkeit ist die Pause, die dich schneller weiterlaufen lässt.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-23"
     },
     {
-      "id": "gratitude-2026-11-24-11",
-      "text": "Zufriedenheit ist keine Schwäche – sie ist der Beweis, dass du weißt, was zählt.",
+      "id": "gratitude-2026-11-24-10",
+      "text": "Was du heute besitzt, war gestern noch dein größter Wunsch.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-24"
     },
     {
-      "id": "gratitude-2026-11-25-12",
-      "text": "Dankbar sein heißt, den Moment nicht zu verpassen, während du an morgen baust.",
+      "id": "gratitude-2026-11-25-11",
+      "text": "Zufriedenheit schlägt jeden Trend, weil sie nie out ist.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-25"
     },
     {
-      "id": "gratitude-2026-11-26-13",
-      "text": "Wer nie innehält, verpasst den Grund, warum er überhaupt läuft.",
+      "id": "gratitude-2026-11-26-12",
+      "text": "Bleib ab und zu stehen und checke, was du schon erreicht hast.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-26"
     },
     {
-      "id": "gratitude-2026-11-27-14",
-      "text": "Zufriedenheit ist der Moment, in dem Ehrgeiz nicht mehr aus Mangel kommt.",
+      "id": "gratitude-2026-11-27-13",
+      "text": "Dankbarkeit ist der Soundtrack, zu dem harte Arbeit leichter fällt.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-27"
     },
     {
-      "id": "gratitude-2026-11-28-15",
-      "text": "Dankbarkeit macht aus genug ein Gefühl, nicht aus eine Zahl.",
+      "id": "gratitude-2026-11-28-14",
+      "text": "Zufriedene Menschen verhandeln nicht mit dem Leben, sie gestalten es.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-28"
     },
     {
-      "id": "gratitude-2026-11-29-16",
-      "text": "Du bist nicht im Rückstand – du bist genau da, wo dein Weg gerade ist.",
+      "id": "gratitude-2026-11-29-15",
+      "text": "Dein Konto wächst schneller, wenn dein Kopf nicht ständig Mangel denkt.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-29"
     },
     {
-      "id": "gratitude-2026-11-30-17",
-      "text": "Zufrieden heißt nicht fertig – zufrieden heißt bereit.",
+      "id": "gratitude-2026-11-30-16",
+      "text": "Dankbarkeit ist kein Luxus für später, sie ist Treibstoff für jetzt.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-11-30"
     },
     {
-      "id": "gratitude-2026-12-01-18",
-      "text": "Dankbarkeit ist der stille Antrieb hinter jedem echten Erfolg.",
+      "id": "gratitude-2026-12-01-17",
+      "text": "Wer zufrieden ist, verschwendet keine Energie an Neid.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-01"
     },
     {
-      "id": "gratitude-2026-12-02-19",
-      "text": "Wer dankbar lebt, muss nichts beweisen – er wächst einfach weiter.",
+      "id": "gratitude-2026-12-02-18",
+      "text": "Du bist weiter, als du denkst – schau mal zurück statt nur nach vorn.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-02"
     },
     {
-      "id": "gratitude-2026-12-03-20",
-      "text": "Zufriedenheit ist die Pause, die dich schneller macht.",
+      "id": "gratitude-2026-12-03-19",
+      "text": "Zufriedenheit heißt nicht aufhören, sondern klarer weitermachen.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-03"
     },
     {
-      "id": "gratitude-2026-12-04-21",
-      "text": "Du hast mehr erreicht, als dein innerer Kritiker zugibt.",
+      "id": "gratitude-2026-12-04-20",
+      "text": "Dankbarkeit macht aus einem normalen Tag einen Vorsprung.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-04"
     },
     {
-      "id": "gratitude-2026-12-05-22",
-      "text": "Dankbarkeit verwandelt Druck in Perspektive.",
+      "id": "gratitude-2026-12-05-21",
+      "text": "Du brauchst keinen Grund zu warten, um stolz auf dich zu sein.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-05"
     },
     {
-      "id": "gratitude-2026-12-06-23",
-      "text": "Zufrieden sein ist kein Stillstand, sondern der ruhige Teil der Bewegung.",
+      "id": "gratitude-2026-12-06-22",
+      "text": "Zufriedenheit ist die Insel, auf der du Kraft für die nächste Welle tankst.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-06"
     },
     {
-      "id": "gratitude-2026-12-07-24",
-      "text": "Du musst nicht jagen, um dankbar zu sein – du darfst beides gleichzeitig.",
+      "id": "gratitude-2026-12-07-23",
+      "text": "Dankbar sein heißt, deinen Fortschritt nicht kleinreden.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-07"
     },
     {
-      "id": "gratitude-2026-12-08-25",
-      "text": "Dankbarkeit ist die einzige Abkürzung zu echtem Reichtum.",
+      "id": "gratitude-2026-12-08-24",
+      "text": "Wer das Wenige wertschätzt, bekommt irgendwann das Viele.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-08"
     },
     {
-      "id": "gratitude-2026-12-09-26",
-      "text": "Wer das Jetzt wertschätzt, verliert die Zukunft nicht aus den Augen.",
+      "id": "gratitude-2026-12-09-25",
+      "text": "Zufriedenheit ist der Ruhepuls, mit dem du Höchstleistung bringst.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-09"
     },
     {
-      "id": "gratitude-2026-12-10-27",
-      "text": "Zufriedenheit heißt: Du spielst nicht mehr gegen dich selbst.",
+      "id": "gratitude-2026-12-10-26",
+      "text": "Dankbarkeit ist die Abkürzung zu echter Motivation.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-10"
     },
     {
-      "id": "gratitude-2026-12-11-28",
-      "text": "Dankbar sein kostet eine Sekunde, verändert aber den ganzen Tag.",
+      "id": "gratitude-2026-12-11-27",
+      "text": "Du musst nicht glücklicher werden – nur öfter hinsehen, was schon gut läuft.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-11"
     },
     {
-      "id": "gratitude-2026-12-12-29",
-      "text": "Du bist schon genug – und genau deshalb kannst du noch mehr werden.",
+      "id": "gratitude-2026-12-12-28",
+      "text": "Zufriedenheit ist Macht, die dir niemand nehmen kann.",
       "author": null,
       "category": "gratitude",
       "dateKey": "2026-12-12"
+    },
+    {
+      "id": "gratitude-2026-12-13-29",
+      "text": "Dankbarkeit heute ist der Zins, den dein zukünftiges Ich dir dankt.",
+      "author": null,
+      "category": "gratitude",
+      "dateKey": "2026-12-13"
     }
   ]
 }
